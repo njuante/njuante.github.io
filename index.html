@@ -218,12 +218,63 @@
             <li class="inline-flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-accent"></span> Presupuesto sin compromiso</li>
           </ul>
         </div>
-        <form action="https://formspree.io/f/mayvlwka" method="POST" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 p-6 shadow-soft">
+        <form id="contactForm" action="https://formspree.io/f/mayvlwka" method="POST" class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 p-6 shadow-soft">
           <div class="grid gap-4">
-            <label class="grid gap-1 text-sm">Nombre<input required name="name" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"/></label>
-            <label class="grid gap-1 text-sm">Email<input required type="email" name="email" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"/></label>
-            <label class="grid gap-1 text-sm">Mensaje<textarea required name="message" rows="4" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"></textarea></label>
-            <button class="mt-2 inline-flex justify-center rounded-xl bg-primary-600 px-5 py-3 text-white hover:bg-primary-700">Enviar</button>
+            <div class="grid gap-1">
+              <label for="name" class="text-sm">Nombre</label>
+              <input id="name" type="text" required name="name" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"/>
+              <span class="text-xs text-rose-500 hidden error-message" data-for="name">Por favor, introduce tu nombre</span>
+            </div>
+            
+            <div class="grid gap-1">
+              <label for="email" class="text-sm">Email</label>
+              <input id="email" type="email" required name="email" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"/>
+              <span class="text-xs text-rose-500 hidden error-message" data-for="email">Por favor, introduce un email válido</span>
+            </div>
+            
+            <div class="grid gap-1">
+              <label for="phone" class="text-sm">Teléfono (opcional)</label>
+              <input id="phone" type="tel" name="phone" placeholder="+34 612 345 678" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"/>
+            </div>
+            
+            <div class="grid gap-1">
+              <label for="subject" class="text-sm">Asunto</label>
+              <select id="subject" name="subject" required class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2">
+                <option value="">Selecciona una opción</option>
+                <option value="proyecto">Proyecto nuevo</option>
+                <option value="consulta">Consulta técnica</option>
+                <option value="colaboracion">Propuesta de colaboración</option>
+                <option value="otro">Otro</option>
+              </select>
+              <span class="text-xs text-rose-500 hidden error-message" data-for="subject">Por favor, selecciona un asunto</span>
+            </div>
+            
+            <div class="grid gap-1">
+              <label for="message" class="text-sm">Mensaje</label>
+              <textarea id="message" required name="message" rows="4" class="mt-1 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent px-3 py-2"></textarea>
+              <span class="text-xs text-rose-500 hidden error-message" data-for="message">Por favor, escribe tu mensaje</span>
+            </div>
+            
+            <div class="grid gap-1">
+              <label class="flex items-center gap-2 text-sm">
+                <input type="checkbox" required name="privacy" class="rounded text-primary-600 focus:ring-primary-500"/>
+                <span>Acepto la política de privacidad</span>
+              </label>
+              <span class="text-xs text-rose-500 hidden error-message" data-for="privacy">Debes aceptar la política de privacidad</span>
+            </div>
+            
+            <div class="mt-2 flex items-center gap-4">
+              <button type="submit" class="inline-flex justify-center rounded-xl bg-primary-600 px-5 py-3 text-white hover:bg-primary-700">
+                <span id="submitText">Enviar</span>
+                <span id="loadingText" class="hidden">
+                  <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                  </svg>
+                </span>
+              </button>
+              <span id="formStatus" class="text-sm"></span>
+            </div>
           </div>
         </form>
       </div>
@@ -360,6 +411,174 @@
 
       // Footer year
       document.getElementById('year').textContent = new Date().getFullYear();
+
+      // Form handling
+      document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        const formStatus = document.getElementById('formStatus');
+        const submitText = document.getElementById('submitText');
+        const loadingText = document.getElementById('loadingText');
+        
+        if (form) {
+          // Validate form on submit
+          form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Reset previous errors
+            document.querySelectorAll('.error-message').forEach(el => el.classList.add('hidden'));
+            formStatus.textContent = '';
+            formStatus.className = 'text-sm';
+            
+            // Validate each required field
+            let hasError = false;
+            
+            // Name validation
+            const nameInput = document.getElementById('name');
+            if (!nameInput.value.trim()) {
+              document.querySelector('[data-for="name"]').classList.remove('hidden');
+              hasError = true;
+            }
+            
+            // Email validation
+            const emailInput = document.getElementById('email');
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(emailInput.value.trim())) {
+              document.querySelector('[data-for="email"]').classList.remove('hidden');
+              hasError = true;
+            }
+            
+            // Subject validation
+            const subjectInput = document.getElementById('subject');
+            if (!subjectInput.value) {
+              document.querySelector('[data-for="subject"]').classList.remove('hidden');
+              hasError = true;
+            }
+            
+            // Message validation
+            const messageInput = document.getElementById('message');
+            if (!messageInput.value.trim()) {
+              document.querySelector('[data-for="message"]').classList.remove('hidden');
+              hasError = true;
+            }
+            
+            // Privacy checkbox validation
+            const privacyInput = document.querySelector('input[name="privacy"]');
+            if (!privacyInput.checked) {
+              document.querySelector('[data-for="privacy"]').classList.remove('hidden');
+              hasError = true;
+            }
+            
+            // If validation passes, submit the form
+            if (!hasError) {
+              // Show loading state
+              submitText.classList.add('hidden');
+              loadingText.classList.remove('hidden');
+              
+              // Collect form data
+              const formData = new FormData(form);
+              
+              // Submit to Formspree
+              fetch(form.action, {
+                method: form.method,
+                body: formData,
+                headers: {
+                  'Accept': 'application/json'
+                }
+              })
+              .then(response => response.json())
+              .then(data => {
+                // Hide loading state
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+                
+                if (data.ok) {
+                  // Success
+                  form.reset();
+                  formStatus.textContent = '¡Mensaje enviado correctamente!';
+                  formStatus.classList.add('text-accent');
+                  
+                  // Clear success message after 5 seconds
+                  setTimeout(() => {
+                    formStatus.textContent = '';
+                    formStatus.classList.remove('text-accent');
+                  }, 5000);
+                } else {
+                  // Error from server
+                  formStatus.textContent = 'Error al enviar el mensaje. Inténtalo de nuevo.';
+                  formStatus.classList.add('text-rose-500');
+                }
+              })
+              .catch(error => {
+                // Network or other error
+                submitText.classList.remove('hidden');
+                loadingText.classList.add('hidden');
+                formStatus.textContent = 'Error de conexión. Verifica tu internet y vuelve a intentar.';
+                formStatus.classList.add('text-rose-500');
+                console.error('Form submission error:', error);
+              });
+            }
+          });
+          
+          // Real-time validation for fields when they lose focus
+          const validateOnBlur = (field, errorSelector, validationFn) => {
+            field.addEventListener('blur', function() {
+              const errorMsg = document.querySelector(errorSelector);
+              if (!validationFn(field.value)) {
+                errorMsg.classList.remove('hidden');
+              } else {
+                errorMsg.classList.add('hidden');
+              }
+            });
+          };
+          
+          validateOnBlur(
+            document.getElementById('name'), 
+            '[data-for="name"]', 
+            value => value.trim() !== ''
+          );
+          
+          validateOnBlur(
+            document.getElementById('email'), 
+            '[data-for="email"]', 
+            value => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+          );
+          
+          validateOnBlur(
+            document.getElementById('message'), 
+            '[data-for="message"]', 
+            value => value.trim() !== ''
+          );
+          
+          document.getElementById('subject').addEventListener('change', function() {
+            const errorMsg = document.querySelector('[data-for="subject"]');
+            if (!this.value) {
+              errorMsg.classList.remove('hidden');
+            } else {
+              errorMsg.classList.add('hidden');
+            }
+          });
+          
+          // Store form data in localStorage to prevent data loss
+          form.querySelectorAll('input, textarea, select').forEach(field => {
+            // Check if there's saved data and restore it
+            const savedValue = localStorage.getItem(`contact_${field.name}`);
+            if (savedValue && field.type !== 'checkbox') {
+              field.value = savedValue;
+            } else if (savedValue && field.type === 'checkbox') {
+              field.checked = savedValue === 'true';
+            }
+            
+            // Save data as user types/changes it
+            field.addEventListener('change', function() {
+              if (field.type === 'checkbox') {
+                localStorage.setItem(`contact_${field.name}`, field.checked);
+              } else {
+                localStorage.setItem(`contact_${field.name}`, field.value);
+              }
+            });
+          });
+        }
+      });
     </script>
   </body>
 </html>
