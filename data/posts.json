@@ -1,0 +1,26 @@
+[
+  {
+    "titulo": "Desplegando sitios estáticos en Coolify",
+    "resumen": "Pipeline minimalista con Git y despliegue automático.",
+    "fecha": "2025-08-10",
+    "slug": "desplegando-sitios-estaticos-coolify",
+    "contenido": "Este sería el contenido completo del artículo...",
+    "etiquetas": ["devops", "coolify", "frontend"]
+  },
+  {
+    "titulo": "RAG en 10 minutos",
+    "resumen": "Arquitectura básica para hacer preguntas a tus documentos.",
+    "fecha": "2025-07-22",
+    "slug": "rag-en-10-minutos",
+    "contenido": "Este sería el contenido completo del artículo...",
+    "etiquetas": ["ia", "openai", "nodejs"]
+  },
+  {
+    "titulo": "Hardening rápido de una Raspberry Pi",
+    "resumen": "Checklist práctico para endurecer tu sistema.",
+    "fecha": "2025-06-05",
+    "slug": "hardening-raspberry-pi",
+    "contenido": "Este sería el contenido completo del artículo...",
+    "etiquetas": ["seguridad", "raspberry", "linux"]
+  }
+]
