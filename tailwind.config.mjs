@@ -5,6 +5,17 @@ export default {
 	theme: {
 		extend: {
 			colors: {
+				border: "hsl(var(--border))",
+				background: "hsl(var(--background))",
+				foreground: "hsl(var(--foreground))",
+				card: {
+					DEFAULT: "hsl(var(--card))",
+					foreground: "hsl(var(--card-foreground))",
+				},
+				popover: {
+					DEFAULT: "hsl(var(--popover))",
+					foreground: "hsl(var(--popover-foreground))",
+				},
 				primary: {
 					50: '#f0f9ff',
 					100: '#e0f2fe',

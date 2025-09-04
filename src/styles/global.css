@@ -68,10 +68,9 @@
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-solid border-gray-200;
   }
   body {
-    @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
