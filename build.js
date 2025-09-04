@@ -5,16 +5,13 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const rimraf = require('rimraf');
-const { promisify } = require('util');
+const { rimraf } = require('rimraf');
 const ejs = require('ejs');
 const expressLayouts = require('express-ejs-layouts');
 
 // Import data
 const posts = require('./data/posts.json');
 const projects = require('./data/projects.json');
-
-const rimrafAsync = promisify(rimraf);
 
 // Configuration
 const BUILD_DIR = path.join(__dirname, 'build');
@@ -28,7 +25,7 @@ async function buildStaticSite() {
     
     // Clean build directory
     console.log('🧹 Cleaning build directory...');
-    await rimrafAsync(BUILD_DIR);
+    await rimraf(BUILD_DIR);
     await fs.ensureDir(BUILD_DIR);
     
     // Copy static assets
@@ -45,8 +42,8 @@ async function buildStaticSite() {
     await generatePage('index', {
       title: 'Juan Núñez — Portafolio',
       page: 'home',
-      base_url: '.'
-    }, layoutTemplate);
+      base_url: '' // Empty string for root level
+    }, layoutTemplate, path.join(BUILD_DIR, 'index.html'));
 
     // Generate projects page
     console.log('🛠️ Generating projects page...');
@@ -94,7 +91,8 @@ async function buildStaticSite() {
     await generatePage('error', {
       title: '404 - Página no encontrada',
       message: 'La página que buscas no existe.',
-      base_url: '.'
+      page: 'error', // Add page property
+      base_url: '' // Empty string for root level
     }, layoutTemplate, path.join(BUILD_DIR, '404.html'));
 
     // Create .nojekyll file to prevent GitHub Pages from using Jekyll
