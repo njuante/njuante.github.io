@@ -1,0 +1,108 @@
+---
+import Button from './Button.astro';
+
+interface Project {
+  title: string;
+  description: string;
+  tags: string[];
+  image: string;
+  link: string;
+}
+
+const featuredProjects: Project[] = [
+  {
+    title: "Modern E-commerce Platform",
+    description: "A full-featured e-commerce solution with product catalog, cart system, user authentication, and payment processing.",
+    tags: ["React", "Node.js", "MongoDB", "Stripe"],
+    image: "/images/projects/ecommerce.jpg",
+    link: "/projects/ecommerce"
+  },
+  {
+    title: "Health & Fitness Tracker",
+    description: "Mobile-responsive application for tracking workouts, nutrition, and health metrics with data visualization.",
+    tags: ["Vue.js", "Firebase", "Chart.js", "PWA"],
+    image: "/images/projects/fitness.jpg",
+    link: "/projects/fitness-tracker"
+  },
+  {
+    title: "Smart Home Dashboard",
+    description: "IoT control dashboard for managing smart home devices with real-time monitoring and automation features.",
+    tags: ["React", "GraphQL", "WebSockets", "IoT"],
+    image: "/images/projects/smart-home.jpg",
+    link: "/projects/smart-home"
+  }
+];
+---
+
+<section id="projects" class="py-20 bg-gray-50 dark:bg-gray-900/50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 
+        class="text-3xl sm:text-4xl font-bold mb-4 gradient-text inline-block"
+        data-aos="fade-up"
+      >
+        Featured Projects
+      </h2>
+      <p 
+        class="text-gray-700 dark:text-gray-300 max-w-xl mx-auto"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        Check out some of my recent work. Each project represents unique challenges and solutions.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {featuredProjects.map((project, index) => (
+        <div 
+          class="glass-panel overflow-hidden flex flex-col h-full transform transition-all hover:-translate-y-2 hover:shadow-2xl"
+          data-aos="fade-up"
+          data-aos-delay={index * 100 + 200}
+        >
+          <div class="relative aspect-video overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/20 to-secondary-500/20 z-10"></div>
+            <img 
+              src={project.image} 
+              alt={project.title}
+              class="w-full h-full object-cover transform transition-transform hover:scale-105"
+            />
+          </div>
+          
+          <div class="p-6 flex flex-col flex-grow">
+            <h3 class="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+              {project.title}
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
+              {project.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.tags.map(tag => (
+                <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <Button href={project.link} variant="ghost" class="text-primary-600 dark:text-primary-400 self-start">
+              View Project
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <Button href="/projects" variant="outline">
+        View All Projects
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </Button>
+    </div>
+  </div>
+</section>

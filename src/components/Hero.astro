@@ -1,0 +1,133 @@
+---
+import Button from './Button.astro';
+---
+
+<section class="relative overflow-hidden pt-16 pb-24 sm:pt-24">
+  <!-- Background gradient decorations -->
+  <div class="absolute top-0 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-gradient-to-r from-primary-400/40 to-secondary-400/40 rounded-full blur-3xl opacity-30 dark:opacity-20 animate-float"></div>
+  <div class="absolute bottom-0 right-1/4 translate-x-1/2 translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-l from-primary-400/40 to-secondary-400/40 rounded-full blur-3xl opacity-30 dark:opacity-20 animate-float" style="animation-delay: -2s;"></div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <!-- Hero heading with gradient text -->
+      <h1 
+        class="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6" 
+        data-aos="fade-up"
+      >
+        <span class="gradient-text">Hello, I'm Juan</span>
+      </h1>
+      
+      <!-- Animated typewriter effect using JavaScript -->
+      <div class="mb-8">
+        <h2 
+          id="typewriter-text" 
+          class="text-2xl sm:text-3xl lg:text-4xl text-gray-800 dark:text-gray-200 font-light" 
+          data-aos="fade-up" 
+          data-aos-delay="200"
+        >
+          Web Developer & Designer
+        </h2>
+      </div>
+      
+      <!-- Description -->
+      <p 
+        class="text-lg text-gray-700 dark:text-gray-300 mb-8 leading-relaxed" 
+        data-aos="fade-up" 
+        data-aos-delay="400"
+      >
+        I build beautiful, responsive, and user-friendly websites with modern web technologies. Let's bring your ideas to life with clean code and stunning design.
+      </p>
+      
+      <!-- Call-to-action buttons -->
+      <div 
+        class="flex flex-col sm:flex-row gap-4 justify-center"
+        data-aos="fade-up" 
+        data-aos-delay="600"
+      >
+        <Button href="#projects" variant="primary" size="lg">
+          View My Projects
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+          </svg>
+        </Button>
+        <Button href="/contact" variant="outline" size="lg">
+          Get In Touch
+        </Button>
+      </div>
+    </div>
+    
+    <!-- Scroll down indicator -->
+    <div 
+      class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-bounce opacity-70"
+      data-aos="fade-up" 
+      data-aos-delay="900"
+    >
+      <span class="text-sm text-gray-600 dark:text-gray-400 mb-2">Scroll Down</span>
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-600 dark:text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+      </svg>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Simple typewriter effect for the hero section
+  document.addEventListener('DOMContentLoaded', () => {
+    const phrases = [
+      'Web Developer & Designer',
+      'Frontend Engineer',
+      'UI/UX Enthusiast',
+      'Problem Solver'
+    ];
+    let currentPhrase = 0;
+    let currentChar = 0;
+    let isDeleting = false;
+    let isPaused = false;
+    let pauseEnd = 0;
+    
+    const typewriterElement = document.getElementById('typewriter-text');
+    
+    if (typewriterElement) {
+      const type = () => {
+        const phrase = phrases[currentPhrase];
+        
+        // Determine if we need to pause
+        if (isPaused && Date.now() > pauseEnd) {
+          isPaused = false;
+        }
+        
+        if (isPaused) {
+          setTimeout(type, 100);
+          return;
+        }
+        
+        // Handle typing or deleting
+        if (isDeleting) {
+          typewriterElement.textContent = phrase.substring(0, currentChar - 1);
+          currentChar--;
+        } else {
+          typewriterElement.textContent = phrase.substring(0, currentChar + 1);
+          currentChar++;
+        }
+        
+        // Transition between phrases
+        if (!isDeleting && currentChar === phrase.length) {
+          // Pause at the end of the phrase
+          isPaused = true;
+          pauseEnd = Date.now() + 2000;
+          isDeleting = true;
+        } else if (isDeleting && currentChar === 0) {
+          isDeleting = false;
+          currentPhrase = (currentPhrase + 1) % phrases.length;
+        }
+        
+        // Calculate typing speed
+        let typeSpeed = isDeleting ? 50 : 100;
+        
+        setTimeout(type, typeSpeed);
+      };
+      
+      setTimeout(type, 1000); // Start after a delay
+    }
+  });
+</script>

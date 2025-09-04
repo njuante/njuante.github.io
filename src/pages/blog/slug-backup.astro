@@ -1,0 +1,390 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+
+export async function getStaticPaths() {
+  // This would typically fetch markdown files or content from a CMS
+  // For now, we're hard-coding some sample posts
+  return [
+    {
+      params: { slug: 'responsive-layouts-css-grid' },
+      props: {
+        post: {
+          title: "Creating Responsive Layouts with CSS Grid",
+          date: "August 28, 2023",
+          author: "Juan",
+          image: "/images/blog/css-grid.jpg",
+          tags: ["CSS", "Web Design", "Responsive"],
+          content: `
+# Creating Responsive Layouts with CSS Grid
+
+CSS Grid has revolutionized the way we build layouts for the web. Unlike older methods that relied on floats or positioning, CSS Grid provides a powerful two-dimensional system for creating complex layouts with ease.
+
+## Getting Started with CSS Grid
+
+To create a grid container, simply set the display property to grid:
+
+\`\`\`css
+.container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+\`\`\`
+
+This creates a 12-column grid with equal column widths and 20px gaps between columns and rows.
+
+## Creating Responsive Layouts
+
+One of the most powerful features of CSS Grid is its ability to create truly responsive layouts without relying on media queries (though they can be combined for even more control):
+
+\`\`\`css
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+\`\`\`
+
+The above code creates a responsive gallery where each item is at least 300px wide, and as many fit on a row as possible. As the screen size changes, the number of columns adjusts automatically.
+
+## Areas and Template Areas
+
+CSS Grid also allows you to create named grid areas, which makes it easy to visualize and create complex layouts:
+
+\`\`\`css
+.page {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "nav main sidebar"
+    "footer footer footer";
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+}
+
+.header { grid-area: header; }
+.nav { grid-area: nav; }
+.main { grid-area: main; }
+.sidebar { grid-area: sidebar; }
+.footer { grid-area: footer; }
+\`\`\`
+
+For mobile layouts, you can simply redefine the grid areas using media queries:
+
+\`\`\`css
+@media (max-width: 768px) {
+  .page {
+    grid-template-areas:
+      "header"
+      "nav"
+      "main"
+      "sidebar"
+      "footer";
+    grid-template-columns: 1fr;
+  }
+}
+\`\`\`
+
+## Conclusion
+
+CSS Grid provides a powerful and intuitive way to create complex, responsive layouts. By mastering these techniques, you can create designs that adapt seamlessly to different screen sizes without the need for complex hacks or workarounds.
+          `
+        }
+      }
+    },
+    {
+      params: { slug: 'getting-started-react-hooks' },
+      props: {
+        post: {
+          title: "Getting Started with React Hooks",
+          date: "July 15, 2023",
+          author: "Juan",
+          image: "/images/blog/react-hooks.jpg",
+          tags: ["React", "JavaScript", "Frontend"],
+          content: `
+# Getting Started with React Hooks
+
+React Hooks were introduced in React 16.8 as a way to use state and other React features without writing a class. This has revolutionized how we write React components, making them more concise and easier to understand.
+
+## The useState Hook
+
+The useState hook allows you to add state to functional components:
+
+\`\`\`jsx
+import React, { useState } from 'react';
+
+function Counter() {
+  const [count, setCount] = useState(0);
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+\`\`\`
+
+## The useEffect Hook
+
+The useEffect hook lets you perform side effects in functional components. It serves the same purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes:
+
+\`\`\`jsx
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = \`You clicked \${count} times\`;
+    
+    // Cleanup function (equivalent to componentWillUnmount)
+    return () => {
+      document.title = 'React App';
+    };
+  }, [count]); // Only re-run if count changes
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+\`\`\`
+
+## Creating Custom Hooks
+
+One of the most powerful features of hooks is the ability to extract and reuse stateful logic between components:
+
+\`\`\`jsx
+function useWindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+  
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+  
+  return width;
+}
+
+function ResponsiveComponent() {
+  const width = useWindowWidth();
+  return (
+    <div>
+      {width > 768 ? 'Large Screen' : 'Small Screen'}
+    </div>
+  );
+}
+\`\`\`
+
+## Conclusion
+
+React Hooks provide a more direct API to React concepts you already know: props, state, context, refs, and lifecycle. They don't replace your knowledge of React concepts, but they do provide a more ergonomic way to use them in your components.
+          `
+        }
+      }
+    },
+    {
+      params: { slug: 'optimizing-website-performance' },
+      props: {
+        post: {
+          title: "Optimizing Website Performance",
+          date: "June 3, 2023",
+          author: "Juan",
+          image: "/images/blog/performance.jpg",
+          tags: ["Performance", "Web Development", "Optimization"],
+          content: `
+# Optimizing Website Performance
+
+Website performance is a critical factor in user experience, SEO rankings, and conversion rates. A slow website can lead to high bounce rates and lost opportunities. Here are essential techniques to improve your website's performance.
+
+## Optimize Images
+
+Images often account for most of the downloaded bytes on a web page. Optimizing them can significantly improve load times:
+
+- Use modern formats like WebP or AVIF when possible
+- Compress images without significant quality loss
+- Use responsive images with srcset to serve appropriate sizes
+- Implement lazy loading for images below the fold
+
+\`\`\`html
+<img 
+  src="small.jpg"
+  srcset="medium.jpg 1000w, large.jpg 2000w"
+  loading="lazy"
+  alt="Description"
+/>
+\`\`\`
+
+## Minimize HTTP Requests
+
+Each file your website loads requires an HTTP request. Reducing these requests can significantly improve load times:
+
+- Bundle CSS and JavaScript files
+- Use CSS sprites for small images
+- Consider inlining critical CSS
+- Implement code splitting for JavaScript
+
+## Leverage Browser Caching
+
+Browser caching stores webpage resources locally on a user's computer, reducing load times for returning visitors:
+
+\`\`\`
+# Apache .htaccess example
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+\`\`\`
+
+## Use Content Delivery Networks (CDNs)
+
+CDNs distribute your content across multiple, geographically diverse servers, ensuring fast delivery regardless of a visitor's location.
+
+## Optimize CSS and JavaScript
+
+- Minify your code to remove unnecessary characters
+- Defer non-critical JavaScript
+- Load CSS asynchronously when possible
+- Remove unused CSS and JavaScript
+
+\`\`\`html
+<!-- Defer non-critical JavaScript -->
+<script src="app.js" defer></script>
+
+<!-- Load CSS asynchronously -->
+<link rel="preload" href="styles.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link rel="stylesheet" href="styles.css"></noscript>
+\`\`\`
+
+## Implement Responsive Design
+
+A responsive design ensures your website performs well on all devices, improving user experience and SEO rankings.
+
+## Conclusion
+
+Website performance optimization is an ongoing process. Regularly test your site using tools like Google PageSpeed Insights, WebPageTest, or Lighthouse to identify and address performance issues. By implementing these techniques, you can create a faster, more user-friendly website that ranks better in search results and provides a better user experience.
+          `
+        }
+      }
+    }
+  ]
+}
+
+const { post } = Astro.props;
+---
+
+<MainLayout title={post.title} description={post.content.substring(0, 160)}>
+  <article class="container mx-auto px-4 py-16">
+    <div class="max-w-4xl mx-auto">
+      <!-- Header -->
+      <header class="mb-12">
+        <h1 
+          class="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 text-gray-900 dark:text-white" 
+          data-aos="fade-up"
+        >
+          {post.title}
+        </h1>
+        
+        <div class="flex flex-wrap items-center gap-4 text-gray-600 dark:text-gray-400 mb-6" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+            </svg>
+            <time>{post.date}</time>
+          </div>
+          
+          <div class="flex items-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+            </svg>
+            <span>{post.author}</span>
+          </div>
+        </div>
+        
+        <div class="flex flex-wrap gap-2 mb-8" data-aos="fade-up" data-aos-delay="200">
+          {post.tags.map(tag => (
+            <span class="text-sm px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </header>
+      
+      <!-- Featured Image -->
+      <div 
+        class="mb-12 rounded-2xl overflow-hidden shadow-lg" 
+        data-aos="fade-up" 
+        data-aos-delay="300"
+      >
+        <img src={post.image} alt={post.title} class="w-full object-cover h-[400px]" />
+      </div>
+      
+      <!-- Post Content -->
+      <div 
+        class="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 prose-headings:dark:text-white prose-a:text-primary-600 prose-a:dark:text-primary-400 prose-p:text-gray-700 prose-p:dark:text-gray-300"
+        data-aos="fade-up" 
+        data-aos-delay="400"
+      >
+        <div set:html={
+          post.content
+            .replace(/`([^`]+)`/g, (_, code) => `<code>${code}</code>`)
+        } />
+      </div>
+      
+      <!-- Social Share -->
+      <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+        <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4">Share this article</h3>
+        <div class="flex space-x-4">
+          <a 
+            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(Astro.url.toString())}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          >
+            <span class="sr-only">Share on Twitter</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+            </svg>
+          </a>
+          <a 
+            href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(Astro.url.toString())}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          >
+            <span class="sr-only">Share on Facebook</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" />
+            </svg>
+          </a>
+          <a 
+            href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(Astro.url.toString())}&title=${encodeURIComponent(post.title)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-gray-600 dark:text-gray-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          >
+            <span class="sr-only">Share on LinkedIn</span>
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </article>
+</MainLayout>

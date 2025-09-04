@@ -1,0 +1,118 @@
+---
+import Button from './Button.astro';
+
+interface BlogPost {
+  title: string;
+  excerpt: string;
+  date: string;
+  image: string;
+  slug: string;
+  tags: string[];
+}
+
+const recentPosts: BlogPost[] = [
+  {
+    title: "Creating Responsive Layouts with CSS Grid",
+    excerpt: "Learn how to build modern, responsive layouts using CSS Grid that work across all screen sizes.",
+    date: "August 28, 2023",
+    image: "/images/blog/css-grid.jpg",
+    slug: "responsive-layouts-css-grid",
+    tags: ["CSS", "Web Design", "Responsive"]
+  },
+  {
+    title: "Getting Started with React Hooks",
+    excerpt: "A comprehensive guide to using React Hooks to manage state and side effects in functional components.",
+    date: "July 15, 2023",
+    image: "/images/blog/react-hooks.jpg",
+    slug: "getting-started-react-hooks",
+    tags: ["React", "JavaScript", "Frontend"]
+  },
+  {
+    title: "Optimizing Website Performance",
+    excerpt: "Essential techniques to improve your website's loading speed and overall performance.",
+    date: "June 3, 2023",
+    image: "/images/blog/performance.jpg",
+    slug: "optimizing-website-performance",
+    tags: ["Performance", "Web Development", "Optimization"]
+  }
+];
+---
+
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 
+        class="text-3xl sm:text-4xl font-bold mb-4 gradient-text inline-block"
+        data-aos="fade-up"
+      >
+        From The Blog
+      </h2>
+      <p 
+        class="text-gray-700 dark:text-gray-300 max-w-xl mx-auto"
+        data-aos="fade-up"
+        data-aos-delay="100"
+      >
+        Thoughts, insights, and resources on web development, design, and technology.
+      </p>
+    </div>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {recentPosts.map((post, index) => (
+        <article 
+          class="glass-panel overflow-hidden flex flex-col h-full transform transition-all hover:-translate-y-1 hover:shadow-xl"
+          data-aos="fade-up"
+          data-aos-delay={index * 100 + 200}
+        >
+          <a href={`/blog/${post.slug}`} class="block relative aspect-video overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-secondary-500/10 z-10"></div>
+            <img 
+              src={post.image} 
+              alt={post.title}
+              class="w-full h-full object-cover transform transition-transform hover:scale-105"
+            />
+          </a>
+          
+          <div class="p-6 flex flex-col flex-grow">
+            <div class="mb-3 flex items-center text-sm text-gray-600 dark:text-gray-400">
+              <time datetime="2023-08-28">{post.date}</time>
+            </div>
+            
+            <h3 class="text-xl font-bold mb-2">
+              <a href={`/blog/${post.slug}`} class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors">
+                {post.title}
+              </a>
+            </h3>
+            
+            <p class="text-gray-700 dark:text-gray-300 mb-4 flex-grow">
+              {post.excerpt}
+            </p>
+            
+            <div class="flex flex-wrap gap-2 mb-4">
+              {post.tags.map(tag => (
+                <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <Button href={`/blog/${post.slug}`} variant="ghost" class="text-primary-600 dark:text-primary-400 self-start">
+              Read More
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </Button>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <Button href="/blog" variant="outline">
+        View All Posts
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+        </svg>
+      </Button>
+    </div>
+  </div>
+</section>

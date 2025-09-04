@@ -1,37 +1,24 @@
-# Dependencies
-node_modules/
-npm-debug.log
-yarn-error.log
-# package-lock.json - Including this file for GitHub Actions
-yarn.lock
-
-# Environment variables
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Editor directories and files
-.idea/
-.vscode/
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-
-# OS files
-.DS_Store
-Thumbs.db
-
-# Build files
+# build output
 dist/
-build/
 
-# Logs
-logs
-*.log
+# generated types
+.astro/
 
-# Debug
-.debug/
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
