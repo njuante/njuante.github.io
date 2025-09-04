@@ -12,9 +12,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function loadProjectsData() {
+  // Get base URL for GitHub Pages compatibility
+  const baseUrl = document.querySelector('base')?.getAttribute('href') || '';
+  
   // Try to load from data file, fallback to inline data if not available
   try {
-    const response = await fetch('/data/projects.json');
+    const response = await fetch(`${baseUrl}/data/projects.json`);
     if (!response.ok) {
       throw new Error('Failed to load projects data');
     }

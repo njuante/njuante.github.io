@@ -55,24 +55,57 @@ function validateEmail(email) {
 
 // Form submission
 async function submitForm(data) {
-  // In the future, you would send this data to your API endpoint
-  try {
-    const response = await fetch('/api/contact', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    });
+  // Check if we're on GitHub Pages (static site)
+  const isStatic = window.location.hostname.includes('github.io') || 
+                   document.querySelector('base') !== null;
+                   
+  if (isStatic) {
+    // For GitHub Pages, we'll use a different approach (e.g., FormSpree, Netlify Forms)
+    // Since we can't use server-side processing
     
-    if (!response.ok) {
-      throw new Error('Error en la respuesta del servidor');
+    try {
+      // FormSpree example - replace 'your-form-id' with your actual form ID
+      // const response = await fetch('https://formspree.io/f/your-form-id', {
+      //   method: 'POST',
+      //   headers: { 'Content-Type': 'application/json' },
+      //   body: JSON.stringify(data)
+      // });
+      
+      // For demo purposes on GitHub Pages, simulate a successful response
+      console.log('Static site form submission data:', data);
+      
+      // You could redirect to a thank you page instead
+      // window.location.href = '/thank-you';
+      
+      return { success: true, message: 'Form submission simulated for static site' };
+      
+    } catch (error) {
+      console.error('Error al enviar el formulario (static site):', error);
+      throw error;
     }
-    
-    return await response.json();
-  } catch (error) {
-    console.error('Error al enviar el formulario:', error);
-    throw error;
+  } else {
+    // Regular API endpoint for dynamic site
+    try {
+      // Get base URL for GitHub Pages compatibility
+      const baseUrl = document.querySelector('base')?.getAttribute('href') || '';
+      
+      const response = await fetch(`${baseUrl}/api/contact`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+      
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
+      
+      return await response.json();
+    } catch (error) {
+      console.error('Error al enviar el formulario:', error);
+      throw error;
+    }
   }
 }
 

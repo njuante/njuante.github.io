@@ -11,9 +11,12 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 async function loadBlogData() {
+  // Get base URL for GitHub Pages compatibility
+  const baseUrl = document.querySelector('base')?.getAttribute('href') || '';
+  
   // Try to load from data file, fallback to inline data if not available
   try {
-    const response = await fetch('/data/posts.json');
+    const response = await fetch(`${baseUrl}/data/posts.json`);
     if (!response.ok) {
       throw new Error('Failed to load blog data');
     }
@@ -66,7 +69,9 @@ function renderBlogPosts(posts) {
     
     // Create link to individual post
     const postLink = document.createElement('a');
-    postLink.href = `/blog/${post.slug || index}`;
+    // Get base URL for GitHub Pages compatibility
+    const baseUrl = document.querySelector('base')?.getAttribute('href') || '';
+    postLink.href = `${baseUrl}/blog/${post.slug || index}/`;
     postLink.appendChild(titleElement.cloneNode(true));
     titleElement.parentNode.replaceChild(postLink, titleElement);
     

@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title><%= title %></title>
     <meta name="description" content="Portafolio personal y blog de Juan Núñez" />
+    <% if (typeof base_url !== 'undefined') { %>
+    <base href="<%= base_url %>/" />
+    <% } %>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/main.css">
+    <link rel="stylesheet" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/assets/css/main.css">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="<%= typeof base_url !== 'undefined' ? base_url : '' %>/assets/js/router.js"></script>
     <script>
       // Tailwind config (colores modernos)
       tailwind.config = {
@@ -46,7 +50,7 @@
     <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-900/60 border-b border-slate-100 dark:border-slate-800">
       <nav class="mx-auto max-w-6xl px-4 md:px-6">
         <div class="flex h-16 items-center justify-between">
-          <a href="/" class="group inline-flex items-center gap-2">
+          <a href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/" class="group inline-flex items-center gap-2">
             <div class="relative h-8 w-8">
               <div class="absolute inset-0 rounded-xl bg-primary-500/20 blur-xl animate-blob"></div>
               <div class="relative grid h-8 w-8 place-items-center rounded-xl bg-primary-600 text-white font-black">J</div>
@@ -54,20 +58,20 @@
             <span class="font-semibold tracking-tight">njuante.dev</span>
           </a>
           <div class="hidden md:flex items-center gap-6">
-            <a class="<%= page === 'projects' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="/projects">Proyectos</a>
-            <a class="hover:text-primary-600" href="/#sobre-mi">Sobre mí</a>
-            <a class="<%= page === 'blog' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="/blog">Blog</a>
-            <a class="<%= page === 'contact' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="/contact">Contacto</a>
+            <a class="<%= page === 'projects' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/projects/">Proyectos</a>
+            <a class="hover:text-primary-600" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/#sobre-mi">Sobre mí</a>
+            <a class="<%= page === 'blog' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/blog/">Blog</a>
+            <a class="<%= page === 'contact' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/contact/">Contacto</a>
             <button id="themeToggle" class="rounded-xl border border-slate-200 dark:border-slate-700 px-3 py-1.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-800" aria-label="Cambiar tema">🌗</button>
           </div>
           <button class="md:hidden" id="menuBtn" aria-label="Abrir menú">☰</button>
         </div>
         <div id="mobileMenu" class="hidden md:hidden pb-4">
           <div class="flex flex-col gap-3">
-            <a class="<%= page === 'projects' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="/projects">Proyectos</a>
-            <a class="hover:text-primary-600" href="/#sobre-mi">Sobre mí</a>
-            <a class="<%= page === 'blog' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="/blog">Blog</a>
-            <a class="<%= page === 'contact' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="/contact">Contacto</a>
+            <a class="<%= page === 'projects' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/projects/">Proyectos</a>
+            <a class="hover:text-primary-600" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/#sobre-mi">Sobre mí</a>
+            <a class="<%= page === 'blog' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/blog/">Blog</a>
+            <a class="<%= page === 'contact' ? 'text-primary-600' : 'hover:text-primary-600' %>" href="<%= typeof base_url !== 'undefined' ? base_url : '' %>/contact/">Contacto</a>
           </div>
         </div>
       </nav>

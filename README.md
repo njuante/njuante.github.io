@@ -6,24 +6,43 @@ Portfolio web personal con blog y formulario de contacto.
 
 ```
 myweb/
-├── index.html           # Main HTML file
+├── views/                        # EJS templates
+│   ├── layout.ejs               # Main layout template
+│   ├── index.ejs                # Home page
+│   ├── blog.ejs                 # Blog listing
+│   ├── post.ejs                 # Individual blog post
+│   ├── projects.ejs             # Projects page
+│   ├── contact.ejs              # Contact page
+│   └── error.ejs                # Error page
 ├── assets/
 │   ├── css/
-│   │   └── main.css     # Main stylesheet
+│   │   └── main.css             # Main stylesheet
 │   ├── js/
-│   │   ├── main.js      # Core functionality
-│   │   ├── form.js      # Contact form handling
-│   │   ├── projects.js  # Projects rendering
-│   │   └── blog.js      # Blog posts rendering
-│   └── img/             # Images directory
+│   │   ├── main.js              # Core functionality
+│   │   ├── form.js              # Contact form handling
+│   │   ├── projects.js          # Projects rendering
+│   │   ├── blog.js              # Blog posts rendering
+│   │   └── router.js            # Client-side routing for GitHub Pages
+│   └── img/                     # Images directory
 ├── api/
-│   └── contact.js       # Contact form handler (backend example)
+│   └── contact.js               # Contact form handler
 ├── data/
-│   ├── projects.json    # Project data
-│   └── posts.json       # Blog post data
-├── package.json         # Project dependencies
-├── server.js            # Simple development server
-└── README.md            # Documentation
+│   ├── projects.json            # Project data
+│   └── posts.json               # Blog post data
+├── server/                      # Server-side code organization
+│   ├── config/                  # Configuration
+│   ├── controllers/             # Route controllers
+│   ├── models/                  # Data models
+│   ├── routes/                  # Express routes
+│   └── utils/                   # Utility functions
+├── .github/
+│   └── workflows/
+│       └── deploy.yml           # GitHub Actions workflow
+├── package.json                 # Project dependencies
+├── server.js                    # Express server
+├── build.js                     # Static site generator
+├── CNAME                        # Custom domain for GitHub Pages
+└── README.md                    # Documentation
 ```
 
 ## Características
@@ -95,12 +114,45 @@ Para implementar un backend:
 
 ## Despliegue
 
-Este sitio puede desplegarse en plataformas como:
+### Servidor de desarrollo local
+```bash
+# Iniciar servidor Express para desarrollo
+npm run dev
+```
+
+### Compilación estática para GitHub Pages
+Este proyecto está configurado para ser desplegado en GitHub Pages como un sitio estático:
+
+```bash
+# Generar archivos estáticos
+npm run build
+```
+
+La carpeta `build/` contendrá la versión estática del sitio que puede ser desplegada.
+
+### Despliegue automatizado con GitHub Actions
+
+El repositorio incluye un flujo de trabajo de GitHub Actions (`/.github/workflows/deploy.yml`) que:
+
+1. Se activa automáticamente al hacer push a la rama main
+2. Instala las dependencias
+3. Ejecuta el script de compilación
+4. Despliega el resultado en GitHub Pages
+
+Los pasos para configurar el despliegue son:
+
+1. Asegúrate de que tu repositorio esté en GitHub
+2. En la configuración del repositorio, habilita GitHub Pages en la sección "Pages"
+3. Selecciona como origen la opción "GitHub Actions"
+4. Haz push de los cambios a la rama main
+
+### Otras plataformas
+
+Este sitio también puede desplegarse en otras plataformas como:
 
 - Netlify
 - Vercel
-- GitHub Pages
-- Cualquier hosting con soporte para Node.js (para funcionalidades de backend)
+- Cualquier hosting con soporte para Node.js (versión dinámica)
 
 ## Licencia
 
