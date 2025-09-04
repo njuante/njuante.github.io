@@ -1,0 +1,50 @@
+[
+  {
+    "titulo": "HomeLab Orquestado",
+    "desc": "Infra casera con Coolify, Pi-hole y monitoring.",
+    "icono": "🧩",
+    "tags": ["cloud", "devops", "docker"],
+    "demo": "#",
+    "repo": "#"
+  },
+  {
+    "titulo": "Dashboard de Red",
+    "desc": "Rastrea dispositivos conectados en tu LAN (Raspberry Pi).",
+    "icono": "📶",
+    "tags": ["frontend", "rust", "raspberry"],
+    "demo": "#",
+    "repo": "#"
+  },
+  {
+    "titulo": "RAG para Docs",
+    "desc": "Búsqueda semántica con embeddings y OpenAI.",
+    "icono": "🧠",
+    "tags": ["ia", "cloud", "node"],
+    "demo": "#",
+    "repo": "#"
+  },
+  {
+    "titulo": "To‑Do en Rust",
+    "desc": "App de tareas CLI/Web escrita en Rust.",
+    "icono": "🦀",
+    "tags": ["rust", "frontend"],
+    "demo": "#",
+    "repo": "#"
+  },
+  {
+    "titulo": "Proxy + AdBlock",
+    "desc": "Proxy local con filtrado y listas personalizadas.",
+    "icono": "🛡️",
+    "tags": ["cloud", "devops"],
+    "demo": "#",
+    "repo": "#"
+  },
+  {
+    "titulo": "Strapi + React",
+    "desc": "CMS headless con frontend React moderno.",
+    "icono": "⚛️",
+    "tags": ["frontend", "node"],
+    "demo": "#",
+    "repo": "#"
+  }
+]

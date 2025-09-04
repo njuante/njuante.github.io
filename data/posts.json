@@ -1,0 +1,34 @@
+[
+  {
+    "titulo": "Configurando rutas dinámicas en Express.js",
+    "resumen": "Cómo actualizar un sitio estático a uno dinámico con Express y EJS.",
+    "fecha": "2025-09-04",
+    "slug": "configurando-rutas-dinamicas-express",
+    "contenido": "<p>Hoy voy a compartir cómo convertí mi sitio web estático en una aplicación dinámica utilizando Express.js y EJS como motor de plantillas.</p><h2>¿Por qué hacer este cambio?</h2><p>Los sitios web estáticos son excelentes para proyectos simples, pero cuando necesitas funcionalidades más avanzadas como rutas personalizadas, APIs o renderizado dinámico de contenido, necesitas un enfoque más robusto.</p><h2>Configuración básica de Express</h2><p>El primer paso fue instalar las dependencias necesarias:</p><pre><code>npm install express ejs express-ejs-layouts</code></pre><p>Luego configuré mi servidor Express con rutas básicas:</p><pre><code>const express = require('express');\nconst app = express();\nconst expressLayouts = require('express-ejs-layouts');\n\n// Configuraciones\napp.set('view engine', 'ejs');\napp.use(expressLayouts);</code></pre><h2>Estructurando las rutas</h2><p>Con Express, puedo definir rutas específicas para cada sección de mi sitio web, haciendo que sea más organizado y mantenible:</p><pre><code>// Página principal\napp.get('/', (req, res) => {\n  res.render('index', { title: 'Mi Sitio Web' });\n});\n\n// Blog con rutas dinámicas\napp.get('/blog/:slug', async (req, res) => {\n  const post = await findPostBySlug(req.params.slug);\n  res.render('post', { post });\n});</code></pre><p>Este enfoque me permite tener URLs limpias y SEO-friendly.</p><h2>Conclusión</h2><p>La transición de un sitio estático a uno dinámico con Express.js ha mejorado significativamente la experiencia del usuario y ha facilitado el mantenimiento del contenido.</p>",
+    "etiquetas": ["express", "nodejs", "web-development"]
+  },
+  {
+    "titulo": "Desplegando sitios estáticos en Coolify",
+    "resumen": "Pipeline minimalista con Git y despliegue automático.",
+    "fecha": "2025-08-10",
+    "slug": "desplegando-sitios-estaticos-coolify",
+    "contenido": "Este sería el contenido completo del artículo...",
+    "etiquetas": ["devops", "coolify", "frontend"]
+  },
+  {
+    "titulo": "RAG en 10 minutos",
+    "resumen": "Arquitectura básica para hacer preguntas a tus documentos.",
+    "fecha": "2025-07-22",
+    "slug": "rag-en-10-minutos",
+    "contenido": "Este sería el contenido completo del artículo...",
+    "etiquetas": ["ia", "openai", "nodejs"]
+  },
+  {
+    "titulo": "Hardening rápido de una Raspberry Pi",
+    "resumen": "Checklist práctico para endurecer tu sistema.",
+    "fecha": "2025-06-05",
+    "slug": "hardening-raspberry-pi",
+    "contenido": "Este sería el contenido completo del artículo...",
+    "etiquetas": ["seguridad", "raspberry", "linux"]
+  }
+]
