@@ -1,0 +1,35 @@
+<!-- Blog Post -->
+<article class="mx-auto max-w-4xl px-4 md:px-6 py-16 md:py-24">
+  <div class="mb-8">
+    <a href="/blog" class="inline-flex items-center gap-2 text-primary-600 hover:text-primary-700">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"/>
+      </svg>
+      Volver al blog
+    </a>
+  </div>
+
+  <div class="mx-auto">
+    <h1 class="text-3xl md:text-4xl font-bold tracking-tight"><%= post.titulo %></h1>
+    <div class="mt-3 text-sm text-slate-500 dark:text-slate-400">
+      <%= new Date(post.fecha).toLocaleDateString('es-ES', { dateStyle: 'medium' }) %>
+    </div>
+
+    <div class="mt-8 prose prose-slate dark:prose-invert max-w-none">
+      <% if (post.contenido) { %>
+        <%- post.contenido %>
+      <% } else { %>
+        <p class="lead"><%= post.resumen %></p>
+        <p>Este es un artículo de muestra. El contenido completo estará disponible próximamente.</p>
+        <h2>Sección de ejemplo</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor.</p>
+        <pre><code>// Código de ejemplo
+function ejemplo() {
+  console.log("Hola mundo");
+  return true;
+}</code></pre>
+        <p>Cras elementum ultrices diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi. Proin porttitor, orci nec nonummy molestie, enim est eleifend mi, non fermentum diam nisl sit amet erat.</p>
+      <% } %>
+    </div>
+  </div>
+</article>

@@ -1,0 +1,21 @@
+<!-- Blog Section Header -->
+<section class="mx-auto max-w-6xl px-4 md:px-6 py-16 md:py-24">
+  <div class="flex items-end justify-between gap-4">
+    <div>
+      <h1 class="text-3xl md:text-4xl font-bold tracking-tight">Blog</h1>
+      <p class="mt-2 text-slate-600 dark:text-slate-300">Artículos técnicos y tutoriales sobre desarrollo.</p>
+    </div>
+  </div>
+
+  <div id="gridPosts" class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3"></div>
+
+  <template id="tplPost">
+    <article class="group relative overflow-hidden rounded-2xl border border-slate-200 dark:border-slate-800 bg-white/70 dark:bg-slate-900/70 p-5 shadow-soft transition hover:-translate-y-1 hover:shadow-lg">
+      <h3 class="text-xl font-semibold group-hover:text-primary-600"></h3>
+      <p class="mt-2 text-sm text-slate-600 dark:text-slate-400"></p>
+      <div class="mt-3 text-xs text-slate-500 dark:text-slate-400"></div>
+    </article>
+  </template>
+</section>
+
+<script src="/assets/js/blog.js"></script>
