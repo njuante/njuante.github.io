@@ -16,8 +16,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
-          cache-dependency-path: './package-lock.json'
+          # Disabling cache since it's causing issues
+          # cache: 'npm'
+          # cache-dependency-path: './package-lock.json'
 
       - name: Install dependencies 📦
         run: npm ci
@@ -30,3 +31,4 @@ jobs:
         with:
           folder: build
           branch: gh-pages
+          clean: true # Ensure to remove old files
