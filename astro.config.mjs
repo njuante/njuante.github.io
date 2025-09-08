@@ -8,7 +8,7 @@ import mdx from '@astrojs/mdx';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://njuante.github.io',
-  base: '/myweb',
+  // No base path needed for user/organization GitHub Pages sites
   vite: {
     plugins: [tailwindcss()]
   },
