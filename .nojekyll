@@ -1,0 +1,2 @@
+# This file tells GitHub Pages not to process this site with Jekyll
+# Instead, we use GitHub Actions with our custom Astro build process

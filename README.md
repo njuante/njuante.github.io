@@ -145,6 +145,8 @@ Your post content here...
 
 ### GitHub Pages (Recommended)
 
+**⚠️ Important Setup Steps:**
+
 1. **Update site configuration**:
    ```js
    // astro.config.mjs
@@ -161,14 +163,18 @@ Your post content here...
    git push origin main
    ```
 
-3. **Configure GitHub Pages**:
-   - Go to your repository settings
-   - Navigate to "Pages" section
-   - Set source to "GitHub Actions"
+3. **Configure GitHub Pages CORRECTLY**:
+   - Go to your repository **Settings**
+   - Navigate to **"Pages"** section in the sidebar
+   - Under **"Source"**, select **"GitHub Actions"** (NOT "Deploy from a branch")
+   - This is crucial - Jekyll deployment will fail with Astro files
 
-4. **Automatic deployment** will trigger on every push to main branch
+4. **Verify deployment**:
+   - Check the **"Actions"** tab in your repository
+   - The workflow should run automatically on push
+   - Your site will be available at `https://yourusername.github.io/your-repo-name`
 
-**Note**: The GitHub Actions workflow is already configured in `.github/workflows/deploy.yml`
+**🚫 Common Issue**: If you see Jekyll errors, make sure you selected **"GitHub Actions"** as the source, not "Deploy from a branch". The `.nojekyll` file is included to prevent Jekyll processing.
 
 ### Manual Deployment
 
