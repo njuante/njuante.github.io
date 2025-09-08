@@ -1,0 +1,119 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+  <nav class="container mx-auto px-6 py-4">
+    <div class="flex items-center justify-between">
+      <!-- Logo -->
+      <a href="/" class="text-2xl font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors">
+        Juan Teo
+      </a>
+      
+      <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center space-x-8">
+        <a 
+          href="/" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath === '/' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Home
+        </a>
+        <a 
+          href="/blog" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath.startsWith('/blog') ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Blog
+        </a>
+        <a 
+          href="/projects" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath.startsWith('/projects') ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Projects
+        </a>
+        <a 
+          href="/contact" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath === '/contact' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Contact
+        </a>
+        <ThemeToggle />
+      </div>
+      
+      <!-- Mobile Menu Button -->
+      <div class="md:hidden flex items-center space-x-4">
+        <ThemeToggle />
+        <button 
+          id="mobile-menu-toggle"
+          class="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+          aria-label="Toggle mobile menu"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Mobile Navigation -->
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-200 dark:border-gray-700">
+      <div class="flex flex-col space-y-4 pt-4">
+        <a 
+          href="/" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath === '/' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Home
+        </a>
+        <a 
+          href="/blog" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath.startsWith('/blog') ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Blog
+        </a>
+        <a 
+          href="/projects" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath.startsWith('/projects') ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Projects
+        </a>
+        <a 
+          href="/contact" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath === '/contact' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Contact
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<script>
+  // Mobile menu toggle
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    if (mobileMenuToggle && mobileMenu) {
+      mobileMenuToggle.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+      });
+    }
+  });
+</script>

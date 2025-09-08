@@ -1,0 +1,111 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+import { getCollection } from 'astro:content';
+
+// Get all blog posts
+const allPosts = await getCollection('blog');
+
+// Sort posts by date (newest first)
+const posts = allPosts.sort((a, b) => 
+  new Date(b.data.pubDate).valueOf() - new Date(a.data.pubDate).valueOf()
+);
+---
+
+<Layout title="Blog - Juan Teo" description="Thoughts, tutorials, and insights about web development, technology, and programming.">
+  <Navigation />
+  
+  <main class="pt-20">
+    <!-- Header Section -->
+    <section class="py-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-purple-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            Blog
+          </h1>
+          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Thoughts, tutorials, and insights about web development, technology, and the ever-evolving world of programming.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Blog Posts -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          {posts.length === 0 ? (
+            <div class="text-center py-16">
+              <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
+                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+              </div>
+              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+                No posts yet
+              </h3>
+              <p class="text-gray-600 dark:text-gray-400 mb-8">
+                Stay tuned! I'll be sharing insights about web development, technology trends, and programming tutorials soon.
+              </p>
+              <a 
+                href="/contact" 
+                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+              >
+                Get Notified
+              </a>
+            </div>
+          ) : (
+            <div class="space-y-12">
+              {posts.map((post) => (
+                <article class="group">
+                  <a href={`/blog/${post.slug}`} class="block">
+                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group-hover:border-blue-200 dark:group-hover:border-blue-700">
+                      <div class="p-8">
+                        <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                          <time datetime={post.data.pubDate.toString()}>
+                            {new Date(post.data.pubDate).toLocaleDateString('en-US', {
+                              year: 'numeric',
+                              month: 'long',
+                              day: 'numeric'
+                            })}
+                          </time>
+                          {post.data.tags && (
+                            <div class="flex space-x-2">
+                              {post.data.tags.slice(0, 3).map((tag: string) => (
+                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded text-xs">
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                        
+                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                          {post.data.title}
+                        </h2>
+                        
+                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
+                          {post.data.description}
+                        </p>
+                        
+                        <div class="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
+                          Read more
+                          <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

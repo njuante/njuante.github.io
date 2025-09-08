@@ -1,43 +1,231 @@
-# Astro Starter Kit: Minimal
+# 🌟 Personal Portfolio Website
 
-```sh
-npm create astro@latest -- --template minimal
+A modern, responsive personal portfolio website built with **Astro** and **Tailwind CSS**. Features a clean design, dark/light mode toggle, blog functionality, project showcase, and contact form.
+
+![Portfolio Screenshot](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=Portfolio+Screenshot)
+
+## ✨ Features
+
+### 🎨 Design & UI
+- **Modern, Clean Design**: Following current UI/UX trends with glassmorphism effects
+- **Fully Responsive**: Mobile-first design that works on all devices
+- **Dark/Light Mode**: Automatic theme detection with manual toggle
+- **Smooth Animations**: Subtle transitions and loading effects
+- **Accessible**: WCAG compliant with proper ARIA labels and keyboard navigation
+
+### 📱 Pages & Functionality
+- **Home**: Engaging hero section with animated background and clear CTAs
+- **Blog**: Dynamic blog with Markdown/MDX support and SEO optimization
+- **Projects**: Showcase of personal and professional work with tags and links
+- **Contact**: Functional contact form with Formspree integration
+
+### ⚡ Performance & SEO
+- **Optimized for Speed**: Static site generation with minimal JavaScript
+- **SEO Friendly**: Meta tags, Open Graph, and semantic HTML
+- **Core Web Vitals**: Excellent performance scores
+- **GitHub Pages Ready**: Automated deployment workflow included
+
+## 🚀 Quick Start
+
+### Prerequisites
+- Node.js 18+ 
+- npm or yarn
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/myweb.git
+   cd myweb
+   ```
+
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   ```
+   http://localhost:4321
+   ```
+
+## 📁 Project Structure
+
 ```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
 /
-├── public/
+├── public/                 # Static assets
+│   ├── favicon.svg
+│   └── ...
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/         # Reusable components
+│   │   ├── Navigation.astro
+│   │   ├── Footer.astro
+│   │   └── ThemeToggle.astro
+│   ├── content/           # Content collections
+│   │   ├── blog/          # Blog posts (Markdown)
+│   │   └── config.ts      # Content schema
+│   ├── layouts/           # Page layouts
+│   │   └── Layout.astro
+│   ├── pages/             # File-based routing
+│   │   ├── index.astro    # Home page
+│   │   ├── blog.astro     # Blog listing
+│   │   ├── blog/
+│   │   │   └── [...slug].astro  # Blog post template
+│   │   ├── projects.astro # Projects showcase
+│   │   ├── contact.astro  # Contact form
+│   │   └── contact/
+│   │       └── success.astro    # Form success page
+│   └── styles/
+│       └── global.css     # Global styles
+├── .github/
+│   └── workflows/
+│       └── deploy.yml     # GitHub Actions deployment
+├── astro.config.mjs       # Astro configuration
+├── tailwind.config.js     # Tailwind configuration
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🛠️ Customization
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+### Personal Information
+1. **Update site metadata** in `src/layouts/Layout.astro`
+2. **Modify hero section** in `src/pages/index.astro`
+3. **Update contact email** in `src/pages/contact.astro`
+4. **Change social links** in `src/components/Footer.astro`
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Styling
+- **Colors**: Modify the color scheme in `tailwind.config.js`
+- **Fonts**: Change font imports in `src/layouts/Layout.astro`
+- **Animations**: Customize animations in `src/styles/global.css`
 
-## 🧞 Commands
+### Content
+- **Blog Posts**: Add Markdown files to `src/content/blog/`
+- **Projects**: Update the projects array in `src/pages/projects.astro`
+- **Images**: Add images to the `public/` directory
 
-All commands are run from the root of the project, from a terminal:
+### Contact Form Setup
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+The contact form uses [Formspree](https://formspree.io/) for form handling:
 
-## 👀 Want to learn more?
+1. **Sign up** for a free Formspree account
+2. **Create a new form** and get your form endpoint
+3. **Update the form action** in `src/pages/contact.astro`:
+   ```astro
+   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+   ```
+4. **Update the email** in the hidden field:
+   ```astro
+   <input type="hidden" name="_to" value="your.email@gmail.com">
+   ```
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📝 Adding Blog Posts
+
+Create a new Markdown file in `src/content/blog/`:
+
+```markdown
+---
+title: "Your Post Title"
+description: "A brief description of your post"
+pubDate: "2024-01-15"
+author: "Your Name"
+tags: ["tag1", "tag2", "tag3"]
+---
+
+# Your Post Title
+
+Your post content here...
+```
+
+## 🚀 Deployment
+
+### GitHub Pages (Recommended)
+
+1. **Update site configuration**:
+   ```js
+   // astro.config.mjs
+   export default defineConfig({
+     site: 'https://yourusername.github.io',
+     base: '/your-repo-name',
+   });
+   ```
+
+2. **Push to GitHub**:
+   ```bash
+   git add .
+   git commit -m "Initial commit"
+   git push origin main
+   ```
+
+3. **Configure GitHub Pages**:
+   - Go to your repository settings
+   - Navigate to "Pages" section
+   - Set source to "GitHub Actions"
+
+4. **Automatic deployment** will trigger on every push to main branch
+
+**Note**: The GitHub Actions workflow is already configured in `.github/workflows/deploy.yml`
+
+### Manual Deployment
+
+If you prefer to deploy manually:
+
+```bash
+# Build the project
+npm run build
+
+# The built files will be in the `dist/` directory
+# Upload the contents of `dist/` to your web server
+```
+
+### Other Deployment Options
+
+- **Netlify**: Connect your GitHub repo and deploy automatically
+- **Vercel**: Import your project and deploy with zero configuration
+- **Cloudflare Pages**: Connect your repository for automatic deployments
+
+## 🛠️ Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build locally
+npm run astro        # Run Astro CLI commands
+npm run astro sync   # Generate TypeScript types for content collections
+```
+
+## 🤝 Contributing
+
+This is a personal portfolio template, but contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+## � Acknowledgments
+
+- **Astro** - The modern static site generator
+- **Tailwind CSS** - Utility-first CSS framework
+- **Formspree** - Form backend service
+- **Inter Font** - Beautiful typography
+
+## 📞 Support
+
+If you have questions or need help customizing this template:
+
+- 📧 Email: juanteofi@gmail.com
+- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/myweb/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/myweb/discussions)
+
+---
+
+Made with ❤️ by [Juan Teo](https://github.com/yourusername)

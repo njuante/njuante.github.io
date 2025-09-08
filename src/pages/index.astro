@@ -1,16 +1,154 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Juan Teo - Full Stack Developer">
+  <Navigation />
+  
+  <main>
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900 pt-20">
+      <!-- Background Animation -->
+      <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 animate-blob"></div>
+        <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+        <div class="absolute -bottom-40 left-20 w-80 h-80 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+      </div>
+      
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="text-center max-w-4xl mx-auto">
+          <!-- Avatar -->
+          <div class="mb-8 relative">
+            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
+              <div class="w-full h-full rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-4xl font-bold text-gray-600 dark:text-gray-300">
+                JT
+              </div>
+            </div>
+          </div>
+          
+          <!-- Main Content -->
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent leading-tight">
+            Juan Teo
+          </h1>
+          
+          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light">
+            Full Stack Developer & Digital Creator
+          </p>
+          
+          <p class="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
+            Passionate about crafting beautiful, functional web experiences that make a difference. 
+            I blend creativity with technical expertise to bring ideas to life.
+          </p>
+          
+          <!-- CTA Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="/projects" 
+              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+            >
+              View My Work
+            </a>
+            <a 
+              href="/contact" 
+              class="border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+          <div class="animate-bounce">
+            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- About Section -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
+            About Me
+          </h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="space-y-6">
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                I'm a passionate Full Stack Developer with a love for creating digital experiences 
+                that are not only functional but also beautiful and intuitive. With expertise in 
+                modern web technologies, I enjoy turning complex problems into simple, elegant solutions.
+              </p>
+              
+              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                When I'm not coding, you can find me exploring new technologies, contributing to 
+                open source projects, or sharing my knowledge through blog posts and tutorials.
+              </p>
+              
+              <div class="flex flex-wrap gap-3">
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JavaScript</span>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">TypeScript</span>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">React</span>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Node.js</span>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Astro</span>
+                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Tailwind CSS</span>
+              </div>
+            </div>
+            
+            <div class="relative">
+              <div class="bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Let's Build Something Amazing</h3>
+                <p class="mb-6 opacity-90">
+                  I'm always excited to work on new projects and collaborate with fellow developers and designers.
+                </p>
+                <a 
+                  href="/contact" 
+                  class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
+                >
+                  Start a Conversation
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
+
+<style>
+  @keyframes blob {
+    0% {
+      transform: translate(0px, 0px) scale(1);
+    }
+    33% {
+      transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+      transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+      transform: translate(0px, 0px) scale(1);
+    }
+  }
+  
+  .animate-blob {
+    animation: blob 7s infinite;
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+  
+  .animation-delay-4000 {
+    animation-delay: 4s;
+  }
+</style>

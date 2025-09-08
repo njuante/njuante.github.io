@@ -1,0 +1,76 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="Page Not Found - Juan Teo" description="The page you're looking for doesn't exist.">
+  <Navigation />
+  
+  <main class="pt-20">
+    <section class="py-20 min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-purple-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <!-- 404 Illustration -->
+          <div class="mb-8">
+            <div class="text-9xl font-bold text-blue-600 dark:text-blue-400 mb-4">
+              404
+            </div>
+            <div class="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mx-auto rounded-full"></div>
+          </div>
+          
+          <!-- Error Message -->
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
+            Page Not Found
+          </h1>
+          
+          <p class="text-xl text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+            Sorry, the page you're looking for doesn't exist. It might have been moved, 
+            deleted, or you entered the wrong URL.
+          </p>
+          
+          <!-- Action Buttons -->
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a 
+              href="/" 
+              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            >
+              Go Home
+            </a>
+            <a 
+              href="/blog" 
+              class="border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            >
+              Browse Blog
+            </a>
+            <a 
+              href="/projects" 
+              class="border border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-3 rounded-lg font-medium transition-colors"
+            >
+              View Projects
+            </a>
+          </div>
+          
+          <!-- Search Suggestion -->
+          <div class="mt-12 p-6 bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700">
+            <h2 class="text-lg font-semibold text-gray-900 dark:text-white mb-3">
+              Looking for something specific?
+            </h2>
+            <p class="text-gray-600 dark:text-gray-400 mb-4">
+              Try navigating to one of these popular sections:
+            </p>
+            <div class="flex flex-wrap justify-center gap-2">
+              <a href="/blog" class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Blog Posts</a>
+              <span class="text-gray-300">•</span>
+              <a href="/projects" class="text-blue-600 dark:text-blue-400 hover:underline text-sm">My Projects</a>
+              <span class="text-gray-300">•</span>
+              <a href="/contact" class="text-blue-600 dark:text-blue-400 hover:underline text-sm">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>
