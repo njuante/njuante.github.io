@@ -49,7 +49,7 @@ const { Content } = await entry.render();
             <span>{entry.data.author}</span>
           </div>
           
-          <time datetime={entry.data.pubDate}>
+          <time datetime={typeof entry.data.pubDate === 'string' ? entry.data.pubDate : entry.data.pubDate.toISOString()}>
             {new Date(entry.data.pubDate).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
