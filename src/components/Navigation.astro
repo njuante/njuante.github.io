@@ -39,6 +39,14 @@ const currentPath = Astro.url.pathname;
           Projects
         </a>
         <a 
+          href="/tools" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath.startsWith('/tools') ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Tools
+        </a>
+        <a 
           href="/contact" 
           class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
             currentPath === '/contact' ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
@@ -90,6 +98,14 @@ const currentPath = Astro.url.pathname;
           }`}
         >
           Projects
+        </a>
+        <a 
+          href="/tools" 
+          class={`text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+            currentPath.startsWith('/tools') ? 'text-blue-600 dark:text-blue-400 font-medium' : ''
+          }`}
+        >
+          Tools
         </a>
         <a 
           href="/contact" 
