@@ -1,7 +1,6 @@
 // @ts-check
 
 import { defineConfig } from 'astro/config';
-import github from '@astrojs/github-pages';
 
 import tailwindcss from '@tailwindcss/vite';
 
@@ -15,7 +14,6 @@ export default defineConfig({
   },
   integrations: [mdx()],
   output: 'static',
-  adapter: github(),
   build: {
     assets: 'assets'
   },
