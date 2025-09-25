@@ -64,7 +64,7 @@ const { title, description = "Personal portfolio of Juan Teo - Full Stack Develo
       }
       
       // Make toggleTheme available globally
-      window.toggleTheme = toggleTheme;
+      (window as any).toggleTheme = toggleTheme;
     </script>
   </body>
 </html>
