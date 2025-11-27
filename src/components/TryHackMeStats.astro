@@ -27,7 +27,7 @@
   <div class="thm-badge-container rounded-lg overflow-hidden border border-cyber-primary/30 bg-cyber-bg-secondary">
     <iframe 
       src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=5990015" 
-      style="border:none; width:100%; min-height:400px;"
+      style="border:none; width:100%; min-height:600px; transform: scale(1.5); transform-origin: top center;"
       title="TryHackMe Profile Badge"
     ></iframe>
   </div>
@@ -36,6 +36,10 @@
 <style>
   .thm-badge-container {
     transition: all 0.3s ease;
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .thm-badge-container:hover {
@@ -45,5 +49,16 @@
 
   .thm-badge-container iframe {
     display: block;
+  }
+
+  @media (max-width: 768px) {
+    .thm-badge-container iframe {
+      transform: scale(1.2);
+      min-height: 500px;
+    }
+    
+    .thm-badge-container {
+      padding: 50px 0;
+    }
   }
 </style>
