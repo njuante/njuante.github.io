@@ -2,46 +2,50 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
-  <div class="container mx-auto px-6 py-12">
+<footer class="bg-cyber-bg-secondary border-t border-cyber-primary/30 relative overflow-hidden">
+  <!-- Background Effect -->
+  <div class="absolute inset-0 cyber-grid opacity-10"></div>
+  
+  <div class="container mx-auto px-6 py-12 relative z-10">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       <!-- About Section -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Juan Teo</h3>
-        <p class="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
-          Full Stack Developer passionate about creating beautiful, functional web experiences. 
-          Always learning and exploring new technologies.
+        <h3 class="text-lg font-bold text-cyber-primary glow-text terminal-text">◉ cybersec.dev</h3>
+        <p class="text-cyber-text-dim text-sm leading-relaxed">
+          Estudiante de Ciberseguridad apasionado por el hacking ético, 
+          análisis de vulnerabilidades y pentesting. Siempre aprendiendo y compartiendo conocimientos.
         </p>
+        <div class="flex items-center gap-2 text-cyber-secondary text-sm">
+          <span class="animate-pulse">●</span>
+          <span>Status: Activo</span>
+        </div>
       </div>
       
       <!-- Quick Links -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Quick Links</h3>
+        <h3 class="text-lg font-bold text-cyber-primary terminal-text">◉ Enlaces</h3>
         <nav class="flex flex-col space-y-2">
-          <a href="/" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-            Home
+          <a href="/" class="footer-link">
+            <span class="text-cyber-primary">→</span> Inicio
           </a>
-          <a href="/blog" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-            Blog
+          <a href="/blog" class="footer-link">
+            <span class="text-cyber-primary">→</span> Blog / Writeups
           </a>
-          <a href="/projects" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-            Projects
-          </a>
-          <a href="/contact" class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm">
-            Contact
+          <a href="/contact" class="footer-link">
+            <span class="text-cyber-primary">→</span> Contacto
           </a>
         </nav>
       </div>
       
       <!-- Social Links -->
       <div class="space-y-4">
-        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Connect</h3>
-        <div class="flex space-x-4">
+        <h3 class="text-lg font-bold text-cyber-primary terminal-text">◉ Conecta</h3>
+        <div class="flex flex-wrap gap-4">
           <a 
-            href="https://github.com" 
+            href="https://github.com/njuante" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="social-link"
             aria-label="GitHub"
           >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -49,10 +53,22 @@ const currentYear = new Date().getFullYear();
             </svg>
           </a>
           <a 
-            href="https://linkedin.com" 
+            href="https://tryhackme.com/p/tu-usuario" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="social-link"
+            aria-label="TryHackMe"
+            title="TryHackMe Profile"
+          >
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+            </svg>
+          </a>
+          <a 
+            href="https://linkedin.com/in/tu-perfil" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            class="social-link"
             aria-label="LinkedIn"
           >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -60,10 +76,10 @@ const currentYear = new Date().getFullYear();
             </svg>
           </a>
           <a 
-            href="https://twitter.com" 
+            href="https://twitter.com/tu-usuario" 
             target="_blank" 
             rel="noopener noreferrer"
-            class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="social-link"
             aria-label="Twitter"
           >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -72,7 +88,7 @@ const currentYear = new Date().getFullYear();
           </a>
           <a 
             href="mailto:juanteofi@gmail.com"
-            class="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+            class="social-link"
             aria-label="Email"
           >
             <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
@@ -84,15 +100,52 @@ const currentYear = new Date().getFullYear();
     </div>
     
     <!-- Bottom Section -->
-    <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+    <div class="mt-8 pt-8 border-t border-cyber-primary/30">
       <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-        <p class="text-gray-600 dark:text-gray-400 text-sm">
-          © {currentYear} Juan Nuñez. All rights reserved.
+        <p class="text-cyber-text-dim text-sm terminal-text">
+          <span class="text-cyber-primary">$</span> © {currentYear} Juan Nuñez • Cybersecurity Student
         </p>
-        <p class="text-gray-600 dark:text-gray-400 text-sm">
-          Built with <span class="text-red-500">♥</span> using Astro & Tailwind CSS
+        <p class="text-cyber-text-dim text-sm">
+          Built with <span class="text-cyber-accent">⚡</span> Astro & Tailwind CSS
+        </p>
+      </div>
+      <div class="text-center mt-4">
+        <p class="text-xs text-cyber-text-dim terminal-text">
+          <span class="text-cyber-primary animate-pulse">►</span> "Hack the planet, learn every day" <span class="text-cyber-primary animate-pulse">◄</span>
         </p>
       </div>
     </div>
   </div>
 </footer>
+
+<style>
+  .footer-link {
+    color: var(--cyber-text);
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .footer-link:hover {
+    color: var(--cyber-primary);
+    text-shadow: 0 0 10px var(--glow-primary);
+    transform: translateX(5px);
+  }
+
+  .social-link {
+    color: var(--cyber-text);
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+  }
+
+  .social-link:hover {
+    color: var(--cyber-primary);
+    border-color: var(--cyber-primary);
+    box-shadow: 0 0 20px var(--glow-primary);
+    transform: translateY(-3px);
+  }
+</style>

@@ -1,8 +1,29 @@
 @import "tailwindcss";
 
-/* Custom styles */
+/* Cybersecurity Professional Theme */
+:root {
+  --cyber-bg: #0a0e17;
+  --cyber-bg-secondary: #111827;
+  --cyber-text: #e5e7eb;
+  --cyber-text-dim: #9ca3af;
+  --cyber-primary: #00ff41;
+  --cyber-secondary: #00d9ff;
+  --cyber-accent: #ff006e;
+  --cyber-warning: #fbbf24;
+  --cyber-terminal: #0dff00;
+  --glow-primary: rgba(0, 255, 65, 0.5);
+  --glow-secondary: rgba(0, 217, 255, 0.5);
+}
+
 html {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', 'Monaco', 'Courier New', monospace;
+  background: var(--cyber-bg);
+  color: var(--cyber-text);
+}
+
+body {
+  background: linear-gradient(135deg, #0a0e17 0%, #111827 50%, #0a0e17 100%);
+  min-height: 100vh;
 }
 
 /* Smooth scrolling */
@@ -12,40 +33,95 @@ html {
   }
 }
 
-/* Custom scrollbar */
+/* Custom scrollbar - Cyber theme */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 12px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #f3f4f6;
+  background: var(--cyber-bg);
+  border-left: 1px solid var(--cyber-primary);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #9ca3af;
-  border-radius: 4px;
+  background: linear-gradient(180deg, var(--cyber-primary), var(--cyber-secondary));
+  border-radius: 6px;
+  border: 2px solid var(--cyber-bg);
+  box-shadow: 0 0 10px var(--glow-primary);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+  background: linear-gradient(180deg, var(--cyber-secondary), var(--cyber-primary));
+  box-shadow: 0 0 15px var(--glow-secondary);
 }
 
-.dark ::-webkit-scrollbar-track {
-  background: #1f2937;
+/* Cyber grid background */
+.cyber-grid {
+  background-image: 
+    linear-gradient(rgba(0, 255, 65, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 65, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  position: relative;
 }
 
-.dark ::-webkit-scrollbar-thumb {
-  background: #4b5563;
+/* Glowing text effect */
+.glow-text {
+  text-shadow: 0 0 10px var(--glow-primary), 0 0 20px var(--glow-primary);
+  animation: pulse-glow 2s ease-in-out infinite;
 }
 
-.dark ::-webkit-scrollbar-thumb:hover {
-  background: #6b7280;
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    text-shadow: 0 0 10px var(--glow-primary), 0 0 20px var(--glow-primary);
+  }
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 20px var(--glow-primary), 0 0 30px var(--glow-primary), 0 0 40px var(--glow-primary);
+  }
 }
 
-/* Focus styles */
-.focus-visible {
-  outline: 2px solid #3b82f6;
-  outline-offset: 2px;
+/* Terminal effect */
+.terminal-text {
+  font-family: 'Courier New', monospace;
+  color: var(--cyber-terminal);
+  text-shadow: 0 0 5px var(--cyber-terminal);
+}
+
+/* Cyber button */
+.cyber-btn {
+  position: relative;
+  padding: 0.75rem 2rem;
+  background: transparent;
+  border: 2px solid var(--cyber-primary);
+  color: var(--cyber-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+  clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
+}
+
+.cyber-btn:hover {
+  background: var(--cyber-primary);
+  color: var(--cyber-bg);
+  box-shadow: 0 0 20px var(--glow-primary), inset 0 0 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Card hover effect */
+.cyber-card {
+  position: relative;
+  background: rgba(17, 24, 39, 0.8);
+  border: 1px solid rgba(0, 255, 65, 0.2);
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.cyber-card:hover {
+  border-color: var(--cyber-primary);
+  box-shadow: 0 0 30px var(--glow-primary);
+  transform: translateY(-5px);
 }
 
 /* Animation utilities */
@@ -64,40 +140,107 @@ html {
   animation: fade-in 0.6s ease-out;
 }
 
-/* Prose improvements */
-.prose img {
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.8s ease-out;
+}
+
+/* Scan line effect */
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scan-line::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--cyber-primary), transparent);
+  animation: scan 4s linear infinite;
+}
+
+/* Prose improvements for blog */
+.prose {
+  color: var(--cyber-text);
+}
+
+.prose code {
+  background: rgba(0, 255, 65, 0.1);
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  color: var(--cyber-primary);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-family: 'Courier New', monospace;
+}
+
+.prose pre {
+  background: rgba(17, 24, 39, 0.9);
+  border: 1px solid rgba(0, 255, 65, 0.3);
   border-radius: 0.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.prose pre code {
+  background: transparent;
+  border: none;
+  padding: 0;
 }
 
 .prose blockquote {
-  border-left-color: #3b82f6;
-  background-color: #eff6ff;
+  border-left: 4px solid var(--cyber-primary);
+  background: rgba(0, 255, 65, 0.05);
   padding: 1rem;
   border-radius: 0.5rem;
+  color: var(--cyber-text);
 }
 
-.dark .prose blockquote {
-  background-color: rgba(59, 130, 246, 0.1);
-  border-left-color: #60a5fa;
+.prose a {
+  color: var(--cyber-secondary);
+  text-decoration: underline;
+  transition: all 0.3s ease;
 }
 
-/* Print styles */
-@media print {
-  .no-print {
-    display: none !important;
+.prose a:hover {
+  color: var(--cyber-primary);
+  text-shadow: 0 0 10px var(--glow-primary);
+}
+
+.prose h1, .prose h2, .prose h3, .prose h4, .prose h5, .prose h6 {
+  color: var(--cyber-primary);
+  font-weight: 700;
+}
+
+/* Loading animation */
+@keyframes loading {
+  0%, 20% {
+    content: '.';
   }
-  
-  body {
-    font-size: 12pt;
-    line-height: 1.4;
+  40% {
+    content: '..';
   }
-  
-  h1, h2, h3, h4, h5, h6 {
-    page-break-after: avoid;
+  60%, 100% {
+    content: '...';
   }
-  
-  p, blockquote {
-    page-break-inside: avoid;
-  }
+}
+
+.loading::after {
+  content: '...';
+  animation: loading 1.5s infinite;
 }

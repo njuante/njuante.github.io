@@ -1,237 +1,253 @@
-# 🌟 Personal Portfolio Website
+# 🔐 Cybersecurity Portfolio - njuante.sec
 
-A modern, responsive personal portfolio website built with **Astro** and **Tailwind CSS**. Features a clean design, dark/light mode toggle, blog functionality, project showcase, and contact form.
+Portafolio profesional de ciberseguridad con integración de TryHackMe API, sistema de blog para writeups CTF y diseño cyberpunk moderno. Construido con Astro y Tailwind CSS.
 
-![Portfolio Screenshot](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=Portfolio+Screenshot)
+## 🎯 Características
 
-## ✨ Features
+- **Tema Cybersecurity**: Diseño profesional con paleta de colores cyber (verde matrix, azul neón, negro)
+- **Integración TryHackMe**: Muestra tu progreso, badges y estadísticas en tiempo real
+- **Blog de Writeups**: Sistema optimizado para publicar writeups de CTF con sintaxis destacada
+- **Diseño Responsivo**: Funciona perfectamente en todos los dispositivos
+- **Animaciones Cyber**: Efectos de escaneo, glow text, y elementos animados
+- **SEO Optimizado**: Meta tags y HTML semántico
+- **Performance**: Generación estática para velocidad óptima
 
-### 🎨 Design & UI
-- **Modern, Clean Design**: Following current UI/UX trends with glassmorphism effects
-- **Fully Responsive**: Mobile-first design that works on all devices
-- **Dark/Light Mode**: Automatic theme detection with manual toggle
-- **Smooth Animations**: Subtle transitions and loading effects
-- **Accessible**: WCAG compliant with proper ARIA labels and keyboard navigation
+## 🚀 Stack Tecnológico
 
-### 📱 Pages & Functionality
-- **Home**: Engaging hero section with animated background and clear CTAs
-- **Blog**: Dynamic blog with Markdown/MDX support and SEO optimization
-- **Projects**: Showcase of personal and professional work with tags and links
-- **Contact**: Functional contact form with Formspree integration
+- **Framework**: Astro 5
+- **Estilos**: Tailwind CSS 4 (tema personalizado cybersecurity)
+- **Tipografía**: JetBrains Mono, Fira Code (monospace)
+- **Content**: Markdown/MDX para writeups
+- **API**: Integración con TryHackMe
 
-### ⚡ Performance & SEO
-- **Optimized for Speed**: Static site generation with minimal JavaScript
-- **SEO Friendly**: Meta tags, Open Graph, and semantic HTML
-- **Core Web Vitals**: Excellent performance scores
-- **GitHub Pages Ready**: Automated deployment workflow included
-
-## 🚀 Quick Start
-
-### Prerequisites
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/myweb.git
-   cd myweb
-   ```
-
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open your browser**
-   ```
-   http://localhost:4321
-   ```
-
-## 📁 Project Structure
+## 📁 Estructura del Proyecto
 
 ```
 /
-├── public/                 # Static assets
-│   ├── favicon.svg
-│   └── ...
+├── public/                    # Assets estáticos
 ├── src/
-│   ├── components/         # Reusable components
-│   │   ├── Navigation.astro
-│   │   ├── Footer.astro
-│   │   └── ThemeToggle.astro
-│   ├── content/           # Content collections
-│   │   ├── blog/          # Blog posts (Markdown)
-│   │   └── config.ts      # Content schema
-│   ├── layouts/           # Page layouts
-│   │   └── Layout.astro
-│   ├── pages/             # File-based routing
-│   │   ├── index.astro    # Home page
-│   │   ├── blog.astro     # Blog listing
-│   │   ├── blog/
-│   │   │   └── [...slug].astro  # Blog post template
-│   │   ├── projects.astro # Projects showcase
-│   │   ├── contact.astro  # Contact form
-│   │   └── contact/
-│   │       └── success.astro    # Form success page
+│   ├── components/
+│   │   ├── Navigation.astro   # Navegación cyber theme
+│   │   ├── Footer.astro       # Footer profesional
+│   │   └── TryHackMeStats.astro # Componente de stats
+│   ├── content/
+│   │   └── blog/              # Writeups en Markdown
+│   ├── layouts/
+│   │   └── Layout.astro       # Layout principal
+│   ├── pages/
+│   │   ├── index.astro        # Página principal (perfil)
+│   │   ├── blog.astro         # Lista de writeups
+│   │   └── contact.astro      # Contacto
 │   └── styles/
-│       └── global.css     # Global styles
-├── .github/
-│   └── workflows/
-│       └── deploy.yml     # GitHub Actions deployment
-├── astro.config.mjs       # Astro configuration
-├── tailwind.config.js     # Tailwind configuration
+│       └── global.css         # Estilos cyber theme
+├── astro.config.mjs
 └── package.json
 ```
 
-## 🛠️ Customization
+## 🛠️ Instalación y Configuración
 
-### Personal Information
-1. **Update site metadata** in `src/layouts/Layout.astro`
-2. **Modify hero section** in `src/pages/index.astro`
-3. **Update contact email** in `src/pages/contact.astro`
-4. **Change social links** in `src/components/Footer.astro`
+### 1. Clonar el repositorio
 
-### Styling
-- **Colors**: Modify the color scheme in `tailwind.config.js`
-- **Fonts**: Change font imports in `src/layouts/Layout.astro`
-- **Animations**: Customize animations in `src/styles/global.css`
+```bash
+git clone https://github.com/njuante/njuante.github.io.git
+cd njuante.github.io
+```
 
-### Content
-- **Blog Posts**: Add Markdown files to `src/content/blog/`
-- **Projects**: Update the projects array in `src/pages/projects.astro`
-- **Images**: Add images to the `public/` directory
+### 2. Instalar dependencias
 
-### Contact Form Setup
+```bash
+npm install
+```
 
-The contact form uses [Formspree](https://formspree.io/) for form handling:
+### 3. Configurar TryHackMe
 
-1. **Sign up** for a free Formspree account
-2. **Create a new form** and get your form endpoint
-3. **Update the form action** in `src/pages/contact.astro`:
-   ```astro
-   <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-   ```
-4. **Update the email** in the hidden field:
-   ```astro
-   <input type="hidden" name="_to" value="your.email@gmail.com">
-   ```
+Edita `src/components/TryHackMeStats.astro` y cambia el usuario:
 
-## 📝 Adding Blog Posts
+```javascript
+const username = 'tu-usuario-tryhackme'; // Línea 3
+```
 
-Create a new Markdown file in `src/content/blog/`:
+### 4. Actualizar información personal
+
+**Navegación** (`src/components/Navigation.astro`):
+```astro
+<span class="terminal-text">tu-nombre.sec</span>
+```
+
+**Footer** (`src/components/Footer.astro`):
+```astro
+- Actualiza links de redes sociales (GitHub, LinkedIn, TryHackMe, Twitter)
+- Cambia el email de contacto
+```
+
+**Página principal** (`src/pages/index.astro`):
+- Actualiza tu nombre, bio y estadísticas
+- Personaliza las skills y herramientas
+- Modifica las certificaciones y learning path
+
+### 5. Iniciar desarrollo
+
+```bash
+npm run dev
+```
+
+Visita `http://localhost:4321`
+
+## 📝 Crear Writeups
+
+### 1. Crear archivo Markdown
+
+Crea un nuevo archivo en `src/content/blog/` siguiendo este formato:
 
 ```markdown
 ---
-title: "Your Post Title"
-description: "A brief description of your post"
-pubDate: "2024-01-15"
-author: "Your Name"
-tags: ["tag1", "tag2", "tag3"]
+title: "TryHackMe - NombreRoom Writeup"
+description: "Breve descripción del desafío y técnicas utilizadas"
+pubDate: "2024-11-27"
+author: "Tu Nombre"
+tags: ["TryHackMe", "Web", "Linux", "Privilege Escalation"]
 ---
 
-# Your Post Title
+# TryHackMe - NombreRoom Writeup
 
-Your post content here...
+## 🎯 Información
+
+- **Plataforma**: TryHackMe
+- **Dificultad**: Fácil/Media/Difícil
+- **Skills**: Enumeration, Exploitation, etc.
+
+## 🔍 Reconocimiento
+
+\`\`\`bash
+nmap -sC -sV <IP>
+\`\`\`
+
+## 💥 Explotación
+
+...tu contenido...
+
+## 🚀 Escalada de Privilegios
+
+...tu contenido...
 ```
 
-## 🚀 Deployment
+### 2. Tags recomendados
 
-### GitHub Pages (Recommended)
+- **Plataformas**: TryHackMe, HackTheBox, VulnHub, PicoCTF
+- **Categorías**: Web, Network, Forensics, Crypto, Steganography, Reverse Engineering
+- **Técnicas**: SQL Injection, XSS, SSRF, LFI, RCE, Buffer Overflow
+- **Sistemas**: Linux, Windows, Active Directory
+- **Herramientas**: Nmap, Burp Suite, Metasploit, John, Hydra
 
-**⚠️ Important Setup Steps:**
+## 🎨 Personalización de Estilos
 
-1. **Update site configuration**:
-   ```js
-   // astro.config.mjs
-   export default defineConfig({
-     site: 'https://yourusername.github.io',
-     base: '/your-repo-name',
-   });
-   ```
+### Colores Cyber Theme
 
-2. **Push to GitHub**:
-   ```bash
-   git add .
-   git commit -m "Initial commit"
-   git push origin main
-   ```
+Los colores principales están definidos en `src/styles/global.css`:
 
-3. **Configure GitHub Pages CORRECTLY**:
-   - Go to your repository **Settings**
-   - Navigate to **"Pages"** section in the sidebar
-   - Under **"Source"**, select **"GitHub Actions"** (NOT "Deploy from a branch")
-   - This is crucial - Jekyll deployment will fail with Astro files
+```css
+:root {
+  --cyber-bg: #0a0e17;              /* Fondo principal */
+  --cyber-primary: #00ff41;          /* Verde matrix */
+  --cyber-secondary: #00d9ff;        /* Azul cyber */
+  --cyber-accent: #ff006e;           /* Rosa/rojo */
+  --cyber-warning: #fbbf24;          /* Amarillo */
+  --cyber-terminal: #0dff00;         /* Verde terminal */
+}
+```
 
-4. **Verify deployment**:
-   - Check the **"Actions"** tab in your repository
-   - The workflow should run automatically on push
-   - Your site will be available at `https://yourusername.github.io/your-repo-name`
+### Clases CSS útiles
 
-**🚫 Common Issue**: If you see Jekyll errors, make sure you selected **"GitHub Actions"** as the source, not "Deploy from a branch". The `.nojekyll` file is included to prevent Jekyll processing.
+- `.cyber-card` - Tarjeta con efecto hover
+- `.cyber-btn` - Botón estilo cybersecurity
+- `.glow-text` - Texto con efecto glow
+- `.terminal-text` - Fuente monospace estilo terminal
+- `.cyber-grid` - Fondo con grid animado
+- `.scan-line` - Efecto de línea de escaneo
 
-### Manual Deployment
+## 📧 Formulario de Contacto
 
-If you prefer to deploy manually:
+El formulario usa Formspree. Para configurarlo:
+
+1. Ve a [formspree.io](https://formspree.io) y crea una cuenta
+2. Crea un nuevo formulario y obtén tu ID
+3. Actualiza `src/pages/contact.astro`:
+
+```html
+<form action="https://formspree.io/f/TU_FORM_ID" method="POST">
+```
+
+## 🚢 Deployment en GitHub Pages
+
+### 1. Configurar GitHub Pages
+
+En tu repositorio de GitHub:
+- Settings → Pages
+- Source: GitHub Actions
+
+### 2. El proyecto ya incluye el workflow
+
+El archivo `.github/workflows/deploy.yml` ya está configurado.
+
+### 3. Push y deploy automático
 
 ```bash
-# Build the project
+git add .
+git commit -m "Update portfolio"
+git push origin master
+```
+
+Tu sitio estará disponible en: `https://tu-usuario.github.io`
+
+### 4. Dominio personalizado (opcional)
+
+Si tienes un dominio:
+1. Crea un archivo `CNAME` en la raíz con tu dominio
+2. Configura DNS records en tu proveedor:
+   - Tipo A: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
+   - O CNAME: tu-usuario.github.io
+
+## 📦 Build para Producción
+
+```bash
+# Build
 npm run build
 
-# The built files will be in the `dist/` directory
-# Upload the contents of `dist/` to your web server
+# Preview
+npm run preview
 ```
 
-### Other Deployment Options
-
-- **Netlify**: Connect your GitHub repo and deploy automatically
-- **Vercel**: Import your project and deploy with zero configuration
-- **Cloudflare Pages**: Connect your repository for automatic deployments
-
-## 🛠️ Available Scripts
+## 🔧 Comandos Disponibles
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run preview      # Preview production build locally
-npm run astro        # Run Astro CLI commands
-npm run astro sync   # Generate TypeScript types for content collections
+npm run dev       # Servidor de desarrollo
+npm run build     # Build para producción
+npm run preview   # Preview del build
+npm run astro     # CLI de Astro
 ```
 
-## 🤝 Contributing
+## 🎓 Recursos de Aprendizaje
 
-This is a personal portfolio template, but contributions are welcome!
+- [TryHackMe](https://tryhackme.com) - Plataforma de aprendizaje
+- [HackTheBox](https://hackthebox.eu) - Laboratorios de pentesting
+- [OWASP Top 10](https://owasp.org/www-project-top-ten/) - Vulnerabilidades web
+- [GTFOBins](https://gtfobins.github.io/) - Escalada de privilegios Linux
+- [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings) - Payloads y técnicas
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+## 📄 Licencia
 
-## 📄 License
+MIT License - Siéntete libre de usar este template para tu portafolio.
 
-This project is open source and available under the [MIT License](LICENSE).
+## 🤝 Contribuciones
 
-## � Acknowledgments
+¡Contribuciones, issues y sugerencias son bienvenidas!
 
-- **Astro** - The modern static site generator
-- **Tailwind CSS** - Utility-first CSS framework
-- **Formspree** - Form backend service
-- **Inter Font** - Beautiful typography
+## 💬 Contacto
 
-## 📞 Support
-
-If you have questions or need help customizing this template:
-
-- 📧 Email: juanteofi@gmail.com
-- 🐛 Issues: [GitHub Issues](https://github.com/yourusername/myweb/issues)
-- 💬 Discussions: [GitHub Discussions](https://github.com/yourusername/myweb/discussions)
+Para preguntas o soporte:
+- Email: juanteofi@gmail.com
+- GitHub: [@njuante](https://github.com/njuante)
 
 ---
 
-Made with ❤️ by [Juan Teo](https://github.com/yourusername)
+⚡ Hecho con pasión por la ciberseguridad | Astro + Tailwind CSS

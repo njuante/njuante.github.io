@@ -13,88 +13,105 @@ const posts = allPosts.sort((a, b) =>
 );
 ---
 
-<Layout title="Blog - Juan Teo" description="Thoughts, tutorials, and insights about web development, technology, and programming.">
+<Layout title="Blog & Writeups - Juan Nuñez" description="CTF writeups, análisis de vulnerabilidades, técnicas de pentesting y aprendizajes en ciberseguridad">
   <Navigation />
   
-  <main class="pt-20">
+  <main class="pt-20 cyber-grid">
     <!-- Header Section -->
-    <section class="py-20 bg-gradient-to-r from-blue-50 to-purple-50 dark:from-gray-900 dark:to-purple-900">
-      <div class="container mx-auto px-6">
+    <section class="py-20 bg-cyber-bg relative overflow-hidden">
+      <div class="absolute inset-0 scan-line opacity-20"></div>
+      <div class="container mx-auto px-6 relative z-10">
         <div class="max-w-4xl mx-auto text-center">
-          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Blog
+          <div class="inline-block mb-6 terminal-text text-sm text-cyber-secondary">
+            <span class="text-cyber-primary">root@terminal</span><span>:</span><span class="text-cyber-secondary">~/blog</span><span>$ ls -la</span>
+          </div>
+          <h1 class="text-4xl md:text-5xl font-bold mb-6 text-cyber-primary glow-text">
+            Blog & Writeups
           </h1>
-          <p class="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Thoughts, tutorials, and insights about web development, technology, and the ever-evolving world of programming.
+          <p class="text-xl text-cyber-text max-w-2xl mx-auto">
+            <span class="text-cyber-primary">▶</span> Writeups de CTF, análisis de vulnerabilidades, 
+            técnicas de pentesting y aprendizajes en <span class="text-cyber-secondary font-semibold">ciberseguridad</span>.
           </p>
+          
+          <!-- Stats -->
+          <div class="flex justify-center gap-8 mt-8">
+            <div class="text-center">
+              <div class="text-3xl font-bold text-cyber-primary">{posts.length}</div>
+              <div class="text-cyber-text-dim text-sm">Writeups</div>
+            </div>
+            <div class="text-center">
+              <div class="text-3xl font-bold text-cyber-secondary">{new Set(posts.flatMap(p => p.data.tags || [])).size}</div>
+              <div class="text-cyber-text-dim text-sm">Categorías</div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
     
     <!-- Blog Posts -->
-    <section class="py-20 bg-white dark:bg-gray-900">
+    <section class="py-20 bg-cyber-bg-secondary">
       <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
+        <div class="max-w-5xl mx-auto">
           {posts.length === 0 ? (
-            <div class="text-center py-16">
-              <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center">
-                <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="text-center py-16 cyber-card rounded-xl p-12">
+              <div class="w-24 h-24 mx-auto mb-6 rounded-full bg-cyber-bg-secondary border-2 border-cyber-primary flex items-center justify-center">
+                <svg class="w-12 h-12 text-cyber-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
                 </svg>
               </div>
-              <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-4">
-                No posts yet
+              <h3 class="text-2xl font-bold text-cyber-primary mb-4 terminal-text">
+                $ ls writeups/
               </h3>
-              <p class="text-gray-600 dark:text-gray-400 mb-8">
-                Stay tuned! I'll be sharing insights about web development, technology trends, and programming tutorials soon.
+              <p class="text-cyber-text-dim mb-8">
+                <span class="text-cyber-secondary">→</span> Estoy preparando mis primeros writeups. 
+                Pronto compartiré análisis detallados de CTFs, técnicas de explotación y aprendizajes.
               </p>
               <a 
                 href="/contact" 
-                class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition-colors"
+                class="cyber-btn inline-block"
               >
-                Get Notified
+                <span class="mr-2">🔔</span> Notificarme
               </a>
             </div>
           ) : (
-            <div class="space-y-12">
+            <div class="space-y-8">
               {posts.map((post) => (
-                <article class="group">
+                <article class="cyber-card rounded-xl overflow-hidden group">
                   <a href={`/blog/${post.slug}`} class="block">
-                    <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 overflow-hidden border border-gray-100 dark:border-gray-700 group-hover:border-blue-200 dark:group-hover:border-blue-700">
-                      <div class="p-8">
-                        <div class="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
-                          <time datetime={post.data.pubDate.toString()}>
-                            {new Date(post.data.pubDate).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'long',
-                              day: 'numeric'
-                            })}
-                          </time>
-                          {post.data.tags && (
-                            <div class="flex space-x-2">
-                              {post.data.tags.slice(0, 3).map((tag: string) => (
-                                <span class="px-2 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 dark:text-blue-300 rounded text-xs">
-                                  {tag}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                        
-                        <h2 class="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {post.data.title}
-                        </h2>
-                        
-                        <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">
-                          {post.data.description}
-                        </p>
-                        
-                        <div class="flex items-center text-blue-600 dark:text-blue-400 font-medium group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-                          Read more
-                          <svg class="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                          </svg>
-                        </div>
+                    <div class="p-8">
+                      <div class="flex flex-wrap items-center gap-4 text-sm text-cyber-text-dim mb-4">
+                        <time datetime={post.data.pubDate.toString()} class="flex items-center gap-2">
+                          <span class="text-cyber-secondary">📅</span>
+                          {new Date(post.data.pubDate).toLocaleDateString('es-ES', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric'
+                          })}
+                        </time>
+                        {post.data.tags && (
+                          <div class="flex flex-wrap gap-2">
+                            {post.data.tags.slice(0, 4).map((tag: string) => (
+                              <span class="px-3 py-1 bg-cyber-primary/10 border border-cyber-primary/30 text-cyber-primary rounded text-xs font-semibold uppercase">
+                                {tag}
+                              </span>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      
+                      <h2 class="text-2xl md:text-3xl font-bold text-cyber-primary group-hover:text-cyber-secondary mb-4 transition-colors terminal-text">
+                        <span class="text-cyber-secondary">▶</span> {post.data.title}
+                      </h2>
+                      
+                      <p class="text-cyber-text mb-6 leading-relaxed">
+                        {post.data.description}
+                      </p>
+                      
+                      <div class="flex items-center text-cyber-secondary font-medium group-hover:text-cyber-primary transition-colors terminal-text">
+                        <span class="mr-2">└─$</span> Leer writeup
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
                       </div>
                     </div>
                   </a>

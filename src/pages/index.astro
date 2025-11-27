@@ -2,67 +2,93 @@
 import Layout from '../layouts/Layout.astro';
 import Navigation from '../components/Navigation.astro';
 import Footer from '../components/Footer.astro';
+import TryHackMeStats from '../components/TryHackMeStats.astro';
 ---
 
-<Layout title="Juan - Full Stack Developer">
+<Layout title="Juan Nuñez - Cybersecurity Student" description="Estudiante de ciberseguridad apasionado por el pentesting, análisis de vulnerabilidades y hacking ético">
   <Navigation />
   
-  <main>
+  <main class="cyber-grid">
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-gray-900 dark:via-gray-900 dark:to-purple-900 pt-20">
-      <!-- Background Animation -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="absolute -top-40 -left-40 w-80 h-80 bg-blue-300 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 animate-blob"></div>
-        <div class="absolute -top-40 -right-40 w-80 h-80 bg-purple-300 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-40 left-20 w-80 h-80 bg-pink-300 dark:bg-pink-600 rounded-full mix-blend-multiply dark:mix-blend-normal filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-20 scan-line">
+      <!-- Animated Background Elements -->
+      <div class="absolute inset-0 overflow-hidden opacity-30">
+        <div class="absolute top-10 left-10 w-64 h-64 border border-cyber-primary/30 rounded-full animate-pulse"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 border border-cyber-secondary/20 rounded-full animate-pulse animation-delay-2000"></div>
+        <div class="absolute top-1/2 left-1/3 w-48 h-48 border border-cyber-accent/20 hex-clip animate-pulse animation-delay-4000"></div>
       </div>
       
       <div class="container mx-auto px-6 relative z-10">
-        <div class="text-center max-w-4xl mx-auto">
-          <!-- Avatar -->
-          <div class="mb-8 relative">
-            <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-r from-blue-500 to-purple-600 p-1">
-              <div class="w-full h-full rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center text-4xl font-bold text-gray-600 dark:text-gray-300">
-                J
-              </div>
-            </div>
+        <div class="text-center max-w-5xl mx-auto">
+          <!-- Terminal Header -->
+          <div class="inline-block mb-8 terminal-text text-sm animate-fade-in">
+            <span class="text-cyber-secondary">root@terminal</span><span class="text-cyber-text">:</span><span class="text-cyber-primary">~</span><span class="text-cyber-text">$ ./intro.sh</span>
           </div>
           
           <!-- Main Content -->
-          <h1 class="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 dark:from-blue-400 dark:via-purple-400 dark:to-blue-300 bg-clip-text text-transparent leading-tight">
-            Juan
+          <h1 class="text-5xl md:text-7xl font-bold mb-6 text-cyber-primary glow-text leading-tight animate-slide-in">
+            Juan Nunez
           </h1>
           
-          <p class="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 font-light">
-            Full Stack Developer & Digital Creator
+          <div class="inline-flex items-center gap-3 mb-8 text-xl md:text-2xl text-cyber-secondary animate-fade-in">
+            <span class="animate-pulse">●</span>
+            <span class="terminal-text">Cybersecurity Student</span>
+            <span class="animate-pulse">●</span>
+          </div>
+          
+          <p class="text-lg text-cyber-text mb-12 max-w-3xl mx-auto leading-relaxed animate-fade-in">
+            <span class="text-cyber-primary">▶</span> Apasionado por el <span class="text-cyber-secondary font-semibold">hacking ético</span>, 
+            <span class="text-cyber-secondary font-semibold">pentesting</span> y análisis de vulnerabilidades. 
+            Constantemente aprendiendo nuevas técnicas de <span class="text-cyber-accent font-semibold">seguridad ofensiva</span> y 
+            compartiendo conocimientos a través de writeups y documentación.
           </p>
           
-          <p class="text-lg text-gray-600 dark:text-gray-400 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Passionate about crafting beautiful, functional web experiences that make a difference. 
-            I blend creativity with technical expertise to bring ideas to life.
-          </p>
+          <!-- Stats Quick View -->
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12 max-w-3xl mx-auto">
+            <div class="cyber-card p-4 rounded-lg">
+              <div class="text-3xl font-bold text-cyber-primary glow-text">5+</div>
+              <div class="text-cyber-text-dim text-sm mt-1">Plataformas CTF</div>
+            </div>
+            <div class="cyber-card p-4 rounded-lg">
+              <div class="text-3xl font-bold text-cyber-secondary">100+</div>
+              <div class="text-cyber-text-dim text-sm mt-1">Horas Práctica</div>
+            </div>
+            <div class="cyber-card p-4 rounded-lg">
+              <div class="text-3xl font-bold text-cyber-accent">50+</div>
+              <div class="text-cyber-text-dim text-sm mt-1">Retos Resueltos</div>
+            </div>
+            <div class="cyber-card p-4 rounded-lg">
+              <div class="text-3xl font-bold text-cyber-warning">10+</div>
+              <div class="text-cyber-text-dim text-sm mt-1">Writeups</div>
+            </div>
+          </div>
           
           <!-- CTA Buttons -->
-          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+          <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <a 
-              href="/projects" 
-              class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+              href="/blog" 
+              class="cyber-btn"
             >
-              View My Work
+              <span class="mr-2">📝</span> Ver Writeups
             </a>
             <a 
               href="/contact" 
-              class="border-2 border-blue-600 text-blue-600 dark:text-blue-400 hover:bg-blue-600 hover:text-white px-8 py-4 rounded-full font-medium transition-all duration-300 transform hover:scale-105"
+              class="cyber-btn"
             >
-              Get In Touch
+              <span class="mr-2">📧</span> Contacto
             </a>
+          </div>
+          
+          <!-- Terminal Command Hint -->
+          <div class="terminal-text text-sm text-cyber-text-dim animate-pulse">
+            <span class="text-cyber-primary">└─$</span> Scroll para explorar más...
           </div>
         </div>
         
         <!-- Scroll Indicator -->
         <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-          <div class="animate-bounce">
-            <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="animate-bounce text-cyber-primary">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
             </svg>
           </div>
@@ -70,51 +96,146 @@ import Footer from '../components/Footer.astro';
       </div>
     </section>
     
-    <!-- About Section -->
-    <section class="py-20 bg-white dark:bg-gray-900">
+    <!-- TryHackMe Stats Section -->
+    <section class="py-20 bg-cyber-bg relative">
       <div class="container mx-auto px-6">
-        <div class="max-w-4xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-white">
-            About Me
+        <div class="max-w-6xl mx-auto">
+          <TryHackMeStats />
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="py-20 bg-cyber-bg-secondary relative">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-cyber-primary glow-text terminal-text">
+            <span class="text-cyber-secondary">◉</span> Skills & Expertise
           </h2>
           
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div class="space-y-6">
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                I'm a passionate Full Stack Developer with a love for creating digital experiences 
-                that are not only functional but also beautiful and intuitive. With expertise in 
-                modern web technologies, I enjoy turning complex problems into simple, elegant solutions.
-              </p>
-              
-              <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-                When I'm not coding, you can find me exploring new technologies, contributing to 
-                open source projects, or sharing my knowledge through blog posts and tutorials.
-              </p>
-              
-              <div class="flex flex-wrap gap-3">
-                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">JavaScript</span>
-                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">TypeScript</span>
-                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">React</span>
-                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Node.js</span>
-                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Astro</span>
-                <span class="px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 rounded-full text-sm">Tailwind CSS</span>
-              </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Offensive Security -->
+            <div class="cyber-card p-6 rounded-xl">
+              <div class="text-4xl mb-4">🔴</div>
+              <h3 class="text-xl font-bold text-cyber-primary mb-4">Offensive Security</h3>
+              <ul class="space-y-2 text-cyber-text-dim text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-primary">▶</span> Penetration Testing
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-primary">▶</span> Web Application Security
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-primary">▶</span> Network Exploitation
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-primary">▶</span> OSINT
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-primary">▶</span> Social Engineering
+                </li>
+              </ul>
             </div>
-            
-            <div class="relative">
-              <div class="bg-gradient-to-r from-blue-400 to-purple-500 rounded-2xl p-8 text-white">
-                <h3 class="text-2xl font-bold mb-4">Let's Build Something Amazing</h3>
-                <p class="mb-6 opacity-90">
-                  I'm always excited to work on new projects and collaborate with fellow developers and designers.
-                </p>
-                <a 
-                  href="/contact" 
-                  class="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-                >
-                  Start a Conversation
-                </a>
-              </div>
+
+            <!-- Tools & Frameworks -->
+            <div class="cyber-card p-6 rounded-xl">
+              <div class="text-4xl mb-4">🛠️</div>
+              <h3 class="text-xl font-bold text-cyber-secondary mb-4">Tools & Frameworks</h3>
+              <ul class="space-y-2 text-cyber-text-dim text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-secondary">▶</span> Burp Suite
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-secondary">▶</span> Metasploit
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-secondary">▶</span> Nmap & Wireshark
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-secondary">▶</span> Kali Linux
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-secondary">▶</span> Python & Bash Scripting
+                </li>
+              </ul>
             </div>
+
+            <!-- Learning Path -->
+            <div class="cyber-card p-6 rounded-xl">
+              <div class="text-4xl mb-4">🎯</div>
+              <h3 class="text-xl font-bold text-cyber-accent mb-4">Learning Path</h3>
+              <ul class="space-y-2 text-cyber-text-dim text-sm">
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-accent">▶</span> OSCP (En Progreso)
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-accent">▶</span> eJPT
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-accent">▶</span> CEH (Preparación)
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-accent">▶</span> CompTIA Security+
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-cyber-accent">▶</span> Bug Bounty Hunting
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTF Platforms Section -->
+    <section class="py-20 bg-cyber-bg relative">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-cyber-primary glow-text terminal-text">
+            <span class="text-cyber-secondary">◉</span> CTF Platforms
+          </h2>
+          
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <a href="https://tryhackme.com" target="_blank" rel="noopener noreferrer" class="cyber-card p-6 rounded-xl text-center hover:scale-105 transition-transform">
+              <div class="text-3xl mb-3">🎯</div>
+              <h3 class="text-lg font-bold text-cyber-primary">TryHackMe</h3>
+            </a>
+            <a href="https://hackthebox.eu" target="_blank" rel="noopener noreferrer" class="cyber-card p-6 rounded-xl text-center hover:scale-105 transition-transform">
+              <div class="text-3xl mb-3">📦</div>
+              <h3 class="text-lg font-bold text-cyber-secondary">HackTheBox</h3>
+            </a>
+            <a href="https://www.vulnhub.com" target="_blank" rel="noopener noreferrer" class="cyber-card p-6 rounded-xl text-center hover:scale-105 transition-transform">
+              <div class="text-3xl mb-3">🔒</div>
+              <h3 class="text-lg font-bold text-cyber-accent">VulnHub</h3>
+            </a>
+            <a href="https://picoctf.org" target="_blank" rel="noopener noreferrer" class="cyber-card p-6 rounded-xl text-center hover:scale-105 transition-transform">
+              <div class="text-3xl mb-3">🏴</div>
+              <h3 class="text-lg font-bold text-cyber-warning">PicoCTF</h3>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 bg-cyber-bg-secondary relative overflow-hidden">
+      <div class="absolute inset-0 cyber-grid opacity-10"></div>
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-cyber-primary glow-text mb-6">
+            ¿Interesado en Colaborar?
+          </h2>
+          <p class="text-xl text-cyber-text mb-8 max-w-2xl mx-auto">
+            Siempre estoy abierto a nuevos retos, colaboraciones en CTFs, o simplemente 
+            compartir conocimientos sobre ciberseguridad.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/blog" class="cyber-btn">
+              <span class="mr-2">📚</span> Leer Blog
+            </a>
+            <a href="/contact" class="cyber-btn">
+              <span class="mr-2">💬</span> Contactar
+            </a>
           </div>
         </div>
       </div>
@@ -125,25 +246,6 @@ import Footer from '../components/Footer.astro';
 </Layout>
 
 <style>
-  @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
-  }
-  
-  .animate-blob {
-    animation: blob 7s infinite;
-  }
-  
   .animation-delay-2000 {
     animation-delay: 2s;
   }
